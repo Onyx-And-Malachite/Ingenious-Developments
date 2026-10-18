@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "serve": "node serve.mjs 2",
+    "serve": "node serve.mjs",
     "screenshot": "node screenshot.mjs"
   },
   "dependencies": {

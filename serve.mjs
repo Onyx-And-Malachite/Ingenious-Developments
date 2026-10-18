@@ -5,14 +5,9 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// Usage: node serve.mjs  -> Ingenious Developments site on port 3000
-const SITES = {
-  2: { dir: 'site-2-ingenious-developments', port: 3000 },
-};
-const site = SITES[process.argv[2] || '2'];
-if (!site) { console.error('Usage: node serve.mjs'); process.exit(1); }
-const PORT = Number(process.env.PORT) || site.port;
-const SITE_DIR = path.join(__dirname, site.dir);
+// Serves this folder (the Ingenious Developments site) at http://localhost:3000
+const PORT = Number(process.env.PORT) || 3000;
+const SITE_DIR = __dirname;
 
 const MIME = {
   '.html': 'text/html',
@@ -49,5 +44,5 @@ http.createServer((req, res) => {
     res.end(data);
   });
 }).listen(PORT, () => {
-  console.log(`Serving ${site.dir} at http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
