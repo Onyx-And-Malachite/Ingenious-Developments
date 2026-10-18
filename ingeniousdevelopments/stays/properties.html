@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Properties — Ingenious Stays</title>
+<link rel="icon" href="../favicon.ico" sizes="48x48">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="description" content="Furnished rental properties in Clayton, NC and the Triangle. Fully equipped for travel nurses, contractors, and professionals.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+.props-hero {
+  background: var(--gs-dk); padding: 4rem 2rem 3.5rem;
+}
+.props-hero-inner { max-width: var(--max-w); margin: 0 auto; }
+.props-hero h1 {
+  font-family: var(--f-display);
+  font-size: clamp(1.875rem, 3.5vw, 2.875rem);
+  font-weight: 700; color: white; line-height: 1.12; margin-bottom: 0.75rem;
+}
+.props-hero p { font-size: 1.3125rem; color: rgba(255,255,255,0.6); max-width: 520px; }
+
+.props-grid {
+  max-width: var(--max-w); margin: 0 auto;
+  padding: 3.5rem 2rem 5rem;
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
+}
+
+/* Property card */
+.prop-card { border-radius: 10px; overflow: hidden; background: white; border: 1px solid var(--border); transition: box-shadow 0.25s, transform 0.2s; }
+.prop-card:hover { box-shadow: 0 10px 40px rgba(28,22,18,0.12); transform: translateY(-4px); }
+.prop-card-gallery { position: relative; height: 260px; overflow: hidden; cursor: pointer; }
+.prop-card-gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.prop-card:hover .prop-card-gallery img { transform: scale(1.04); }
+
+/* Slideshow dots */
+.prop-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.4s; }
+.prop-slide.active { opacity: 1; }
+.prop-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.prop-dots { position: absolute; bottom: 0.75rem; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; z-index: 3; }
+.prop-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.4); transition: background 0.25s; }
+.prop-dot.active { background: white; }
+
+.prop-card-badge { position: absolute; top: 0.875rem; left: 0.875rem; z-index: 2; }
+.prop-card-body { padding: 1.375rem; }
+.prop-card-name { font-family: var(--f-display); font-size: 1.3125rem; font-weight: 700; color: var(--ink); margin-bottom: 0.25rem; }
+.prop-card-location { font-size: 1.3125rem; color: var(--ink-lt); margin-bottom: 0.875rem; display: flex; align-items: center; gap: 0.35rem; }
+.prop-card-specs { display: flex; gap: 1.125rem; padding-bottom: 0.875rem; border-bottom: 1px solid var(--border-lt); margin-bottom: 0.875rem; }
+.prop-card-spec { font-size: 1.3125rem; color: var(--ink-mid); font-weight: 500; }
+.prop-card-desc { font-size: 1.3125rem; line-height: 1.65; color: var(--ink-mid); margin-bottom: 1.125rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.prop-card-footer { display: flex; align-items: center; justify-content: space-between; }
+.prop-card-price { font-size: 1.3125rem; font-weight: 700; color: var(--ink); }
+.prop-card-price span { font-size: 1.3125rem; font-weight: 400; color: var(--ink-lt); }
+
+/* Photo gallery modal */
+.gallery-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.94); z-index: 2000; flex-direction: column; align-items: center; justify-content: center; }
+.gallery-modal.open { display: flex; }
+.gallery-modal img { max-width: 90vw; max-height: 78vh; object-fit: contain; border-radius: 4px; }
+.gallery-nav { display: flex; align-items: center; gap: 1.25rem; margin-top: 1rem; }
+.gallery-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); color: white; padding: 0.5rem 1.5rem; border-radius: 4px; cursor: pointer; font-family: var(--f-body); font-size: 0.875rem; transition: background 0.2s; }
+.gallery-btn:hover { background: rgba(255,255,255,0.22); }
+.gallery-count { color: rgba(255,255,255,0.45); font-size: 0.8rem; min-width: 50px; text-align: center; }
+.gallery-close { position: absolute; top: 1.25rem; right: 1.5rem; background: none; border: none; color: rgba(255,255,255,0.6); font-size: 2.25rem; cursor: pointer; line-height: 1; }
+.gallery-close:hover { color: white; }
+
+/* Coming soon card */
+.prop-card-coming {
+  border-radius: 10px; border: 2px dashed var(--border);
+  padding: 3rem 2rem; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center; gap: 0.75rem;
+}
+.prop-card-coming-title { font-family: var(--f-display); font-size: 1.3125rem; font-weight: 700; color: var(--ink-lt); }
+.prop-card-coming-body { font-size: 1.3125rem; color: var(--ink-lt); line-height: 1.6; max-width: 220px; }
+
+@media (max-width: 900px) {
+  .props-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 640px) {
+  .props-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body class="page-body-sub">
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">
+      <span class="nav-brand-main">Ingenious Developments</span>
+      <span class="nav-brand-sub">Clayton, North Carolina</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-active">Stays</a></li>
+      <li><a href="../homes/index.html">Homes</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="book.html" class="nav-cta">Book Now</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <a href="index.html">Stays Home</a>
+  <a href="properties.html">All Properties</a>
+  <!-- FOR EMPLOYERS TAB — hidden, restore when needed: <a href="for-employers.html">For Employers</a> -->
+  <a href="book.html" style="color:var(--gold);font-weight:700;">Book Now →</a>
+</div>
+
+<!-- SUBNAV -->
+<nav class="subnav subnav-gs">
+  <div class="subnav-inner">
+    <a href="../index.html" class="subnav-back">← Home</a>
+    <a href="index.html">Overview</a>
+    <a href="properties.html" class="active">Properties</a>
+    <!-- FOR EMPLOYERS TAB — hidden, restore when needed: <a href="for-employers.html">For Employers</a> -->
+    <a href="book.html">Book Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="props-hero">
+  <div class="props-hero-inner">
+    <span class="eyebrow eyebrow-gold">All Furnished Rentals</span>
+    <h1>Properties available now.</h1>
+    <p>Every unit is fully furnished and move-in ready. All utilities included. Hover to browse photos, click to inquire.</p>
+  </div>
+</div>
+
+<!-- PROPERTY GRID -->
+<div class="props-grid">
+
+  <!-- UNIT 1 — Cozy Clayton Get Away -->
+  <div class="prop-card" onmouseenter="startSlide(this)" onmouseleave="stopSlide(this)">
+    <div class="prop-card-gallery" onclick="openGallery(0)">
+      <div class="prop-slide active"><img src="../../157 Pictures/jpg/IMG_9749 - Copy.jpg" alt="Living area"></div>
+      <div class="prop-slide"><img src="../../157 Pictures/jpg/IMG_9717 - Copy.jpg" alt="Kitchen"></div>
+      <div class="prop-slide"><img src="../../157 Pictures/jpg/IMG_9725 - Copy.jpg" alt="Bedroom"></div>
+      <div class="prop-slide"><img src="../../157 Pictures/jpg/IMG_9734 - Copy.jpg" alt="Bathroom"></div>
+      <div class="prop-slide"><img src="../../157 Pictures/jpg/IMG_9738 - Copy.jpg" alt="Dining"></div>
+      <div class="prop-slide"><img src="../../157 Pictures/jpg/IMG_9744 - Copy.jpg" alt="Exterior"></div>
+      <div class="prop-slide"><img src="../../157 Pictures/jpg/IMG_9793 - Copy.jpg" alt="Detail"></div>
+      <div class="prop-slide"><img src="../../157 Pictures/jpg/IMG_9794 - Copy.jpg" alt="Detail"></div>
+      <div class="prop-slide"><img src="../../157 Pictures/jpg/IMG_9807.jpg" alt="Detail"></div>
+      <div class="prop-card-badge"><span class="badge badge-available">Available Now</span></div>
+      <div class="prop-dots">
+        <div class="prop-dot active"></div><div class="prop-dot"></div><div class="prop-dot"></div>
+        <div class="prop-dot"></div><div class="prop-dot"></div><div class="prop-dot"></div>
+        <div class="prop-dot"></div><div class="prop-dot"></div><div class="prop-dot"></div>
+      </div>
+    </div>
+    <div class="prop-card-body">
+      <div class="prop-card-name">Cozy Clayton Get Away</div>
+      <div class="prop-card-location">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Clayton, NC · 5 min from Johnston Health
+      </div>
+      <div class="prop-card-specs">
+        <span class="prop-card-spec">3 Beds</span>
+        <span class="prop-card-spec">2 Baths</span>
+        <span class="prop-card-spec">Sleeps 4</span>
+        <span class="prop-card-spec">In-unit W/D</span>
+      </div>
+      <p class="prop-card-desc">Fully furnished home with full kitchen, dedicated workspace, in-unit laundry, and private parking. All utilities and WiFi included.</p>
+      <div class="prop-card-footer">
+        <div class="prop-card-price">$125 <span>/ night</span></div>
+        <a href="book.html" class="btn btn-gs btn-sm">Inquire →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMING SOON 1 -->
+  <div class="prop-card-coming">
+    <span class="badge badge-soon">Coming Soon</span>
+    <div class="prop-card-coming-title">Unit 2 · Clayton, NC</div>
+    <p class="prop-card-coming-body">A second furnished unit near Johnston Health. Join the waitlist to be notified first.</p>
+    <a href="book.html" class="btn btn-outline-gs btn-sm">Join Waitlist</a>
+  </div>
+
+  <!-- COMING SOON 2 -->
+  <div class="prop-card-coming">
+    <span class="badge badge-soon">Planned 2029</span>
+    <div class="prop-card-coming-title">Louisburg · Franklin County</div>
+    <p class="prop-card-coming-body">Expanding north. Reach out if you're a professional placed in the Louisburg or Wake Forest area.</p>
+    <a href="book.html" class="btn btn-outline-gs btn-sm">Express Interest</a>
+  </div>
+
+</div>
+
+<!-- GALLERY MODAL -->
+<div class="gallery-modal" id="gallery-modal" onclick="if(event.target===this)closeGallery()">
+  <button class="gallery-close" onclick="closeGallery()">&times;</button>
+  <img id="gallery-img" src="" alt="Property photo">
+  <div class="gallery-nav">
+    <button class="gallery-btn" onclick="galleryMove(-1)">← Prev</button>
+    <span class="gallery-count" id="gallery-count"></span>
+    <button class="gallery-btn" onclick="galleryMove(1)">Next →</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Ingenious Developments</div>
+      <p class="footer-brand-sub">Welcoming those who serve. Protecting those who built.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Stays</h4>
+      <a href="index.html">Overview</a>
+      <a href="properties.html">All Properties</a>
+      <!-- FOR EMPLOYERS TAB — hidden, restore when needed: <a href="for-employers.html">For Employers</a> -->
+      <a href="book.html">Book Now</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="../index.html">Home</a>
+      <a href="../homes/index.html">Homes</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:info@ingeniousdevelopments.com">info@ingeniousdevelopments.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Ingenious Developments LLC · Clayton, NC</span>
+  </div>
+</footer>
+
+<script>
+// Slideshow on hover
+const _ss = {};
+function startSlide(card) {
+  const slides = card.querySelectorAll('.prop-slide');
+  const dots   = card.querySelectorAll('.prop-dot');
+  if (slides.length < 2) return;
+  let i = 0;
+  _ss[card] = setInterval(() => {
+    slides[i].classList.remove('active'); dots[i].classList.remove('active');
+    i = (i + 1) % slides.length;
+    slides[i].classList.add('active'); dots[i].classList.add('active');
+  }, 900);
+}
+function stopSlide(card) {
+  clearInterval(_ss[card]);
+  card.querySelectorAll('.prop-slide').forEach((s,i) => { s.classList.toggle('active', i===0); });
+  card.querySelectorAll('.prop-dot').forEach((d,i)   => { d.classList.toggle('active', i===0); });
+}
+
+// Gallery modal
+const PHOTOS = [
+  '../../157 Pictures/jpg/IMG_9749 - Copy.jpg',
+  '../../157 Pictures/jpg/IMG_9717 - Copy.jpg',
+  '../../157 Pictures/jpg/IMG_9725 - Copy.jpg',
+  '../../157 Pictures/jpg/IMG_9734 - Copy.jpg',
+  '../../157 Pictures/jpg/IMG_9738 - Copy.jpg',
+  '../../157 Pictures/jpg/IMG_9744 - Copy.jpg',
+  '../../157 Pictures/jpg/IMG_9793 - Copy.jpg',
+  '../../157 Pictures/jpg/IMG_9794 - Copy.jpg',
+  '../../157 Pictures/jpg/IMG_9807.jpg'
+];
+let gIdx = 0;
+const gModal = document.getElementById('gallery-modal');
+const gImg   = document.getElementById('gallery-img');
+const gCount = document.getElementById('gallery-count');
+function openGallery(start) { gIdx=start; gModal.classList.add('open'); _updateG(); }
+function closeGallery()     { gModal.classList.remove('open'); }
+function galleryMove(d)     { gIdx=(gIdx+d+PHOTOS.length)%PHOTOS.length; _updateG(); }
+function _updateG()         { gImg.src=PHOTOS[gIdx]; gCount.textContent=`${gIdx+1} / ${PHOTOS.length}`; }
+document.addEventListener('keydown', e => {
+  if (!gModal.classList.contains('open')) return;
+  if (e.key==='ArrowRight') galleryMove(1);
+  if (e.key==='ArrowLeft')  galleryMove(-1);
+  if (e.key==='Escape')     closeGallery();
+});
+document.querySelectorAll('.mobile-nav a').forEach(a => a.addEventListener('click', () => document.querySelector('.mobile-nav').classList.remove('open')));
+</script>
+</body>
+</html>

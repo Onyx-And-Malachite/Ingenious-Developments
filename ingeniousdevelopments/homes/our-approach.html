@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Approach — Ingenious Homes</title>
+<link rel="icon" href="../favicon.ico" sizes="48x48">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="description" content="How Ingenious Homes sources properties, sets rehab standards, and handles occupied acquisitions in North Carolina communities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+.approach-hero { background: var(--gh-dk); padding: 4.5rem 2rem 4rem; }
+.approach-hero-inner { max-width: var(--max-w); margin: 0 auto; }
+.approach-hero h1 {
+  font-family: var(--f-display);
+  font-size: clamp(2rem, 3.5vw, 2.875rem);
+  font-weight: 700; color: white; line-height: 1.12; margin-bottom: 0.875rem;
+}
+.approach-hero p { font-size: 1.3125rem; color: rgba(255,255,255,0.62); max-width: 540px; line-height: 1.65; }
+
+.approach-section { padding: 5rem 2rem; }
+.approach-inner { max-width: var(--max-w); margin: 0 auto; }
+.approach-h2 {
+  font-family: var(--f-display); font-size: 1.75rem; font-weight: 700;
+  color: var(--ink); margin-bottom: 1.25rem; letter-spacing: -0.018em;
+}
+.approach-text { font-size: 1.3125rem; line-height: 1.8; color: var(--ink-mid); margin-bottom: 1.25rem; }
+.approach-text strong { color: var(--ink); font-weight: 600; }
+
+/* Standards list */
+.standards-list { list-style: none; margin-top: 1.5rem; }
+.standard-item {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 1.25rem 0; border-bottom: 1px solid var(--border-lt);
+}
+.standard-item:last-child { border-bottom: none; }
+.standard-icon {
+  width: 36px; height: 36px; border-radius: 6px;
+  background: var(--gh-pale); display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 2px;
+}
+.standard-icon svg { stroke: var(--gh-dk); }
+.standard-text h4 { font-weight: 700; font-size: 1.3125rem; color: var(--ink); margin-bottom: 0.3rem; }
+.standard-text p { font-size: 1.3125rem; line-height: 1.65; color: var(--ink-mid); }
+
+/* Process steps */
+.process-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 0; position: relative; margin-top: 2.5rem;
+}
+.process-step {
+  padding: 1.75rem; border-left: 1px solid var(--border-lt);
+}
+.process-step:first-child { border-left: none; padding-left: 0; }
+.process-num {
+  font-family: var(--f-display); font-size: 2rem; font-weight: 700;
+  color: var(--gh-pale); line-height: 1; margin-bottom: 0.875rem;
+}
+.process-step h4 { font-weight: 700; font-size: 1.3125rem; color: var(--ink); margin-bottom: 0.5rem; }
+.process-step p { font-size: 1.3125rem; line-height: 1.65; color: var(--ink-mid); }
+
+/* Occupied acquisitions — key section for officials */
+.occupied-section { background: var(--gh-soft); padding: 5rem 2rem; }
+.occupied-inner { max-width: var(--max-w); margin: 0 auto; }
+.occupied-callout {
+  background: white; border: 1px solid rgba(122,46,26,0.15);
+  border-left: 4px solid var(--gh-dk);
+  border-radius: 0 8px 8px 0; padding: 2.5rem;
+  margin-top: 2rem;
+}
+.occupied-callout h3 {
+  font-family: var(--f-display); font-size: 1.3125rem; font-weight: 700;
+  color: var(--gh-dk); margin-bottom: 0.875rem;
+}
+.occupied-policy { display: flex; gap: 1rem; margin-bottom: 1rem; align-items: flex-start; }
+.occupied-policy svg { stroke: var(--gh-dk); flex-shrink: 0; margin-top: 2px; }
+.occupied-policy p { font-size: 1.3125rem; line-height: 1.65; color: var(--ink-mid); }
+.occupied-policy p strong { color: var(--ink); }
+
+/* Official CTA */
+.official-cta { background: var(--ink); padding: 4.5rem 2rem; }
+.official-cta-inner {
+  max-width: 680px; margin: 0 auto; text-align: center;
+}
+.official-cta h2 {
+  font-family: var(--f-display); font-size: clamp(1.75rem,3vw,2.5rem);
+  font-weight: 700; color: white; margin-bottom: 1rem;
+}
+.official-cta p { font-size: 1.3125rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 2rem; }
+
+@media (max-width: 900px) {
+  .process-grid { grid-template-columns: 1fr 1fr; gap: 0; }
+  .process-step:nth-child(2) { border-left: 1px solid var(--border-lt); }
+  .process-step:nth-child(3) { border-left: none; padding-left: 0; border-top: 1px solid var(--border-lt); }
+  .process-step:nth-child(4) { border-top: 1px solid var(--border-lt); }
+}
+@media (max-width: 640px) {
+  .process-grid { grid-template-columns: 1fr; }
+  .process-step { border-left: none !important; padding-left: 0 !important; border-top: 1px solid var(--border-lt); }
+  .process-step:first-child { border-top: none; }
+}
+</style>
+</head>
+<body class="page-body-sub">
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">
+      <span class="nav-brand-main">Ingenious Developments</span>
+      <span class="nav-brand-sub">Clayton, North Carolina</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../stays/index.html">Stays</a></li>
+      <li><a href="index.html" class="nav-active">Homes</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../stays/book.html" class="nav-cta">Find a Stay</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <a href="index.html">Homes Home</a>
+  <a href="our-approach.html">Our Approach</a>
+  <a href="available-homes.html">Available Homes</a>
+  <a href="partners.html">Partners &amp; Funders</a>
+</div>
+
+<!-- SUBNAV -->
+<nav class="subnav subnav-gh">
+  <div class="subnav-inner">
+    <a href="../index.html" class="subnav-back">← Home</a>
+    <a href="index.html">Overview</a>
+    <a href="our-approach.html" class="active">Our Approach</a>
+    <a href="available-homes.html">Available Homes</a>
+    <a href="partners.html">Partners &amp; Funders</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="approach-hero">
+  <div class="approach-hero-inner">
+    <span class="eyebrow eyebrow-gold">For Community Leaders &amp; Municipal Officials</span>
+    <h1>How we source, rehabilitate, and manage homes.</h1>
+    <p>This page explains our acquisition criteria, rehabilitation standards, and how we handle properties that are occupied at the time of purchase. Designed for the officials and community partners who want to understand us before taking a meeting.</p>
+  </div>
+</div>
+
+<!-- SOURCING -->
+<section class="approach-section">
+  <div class="approach-inner">
+    <span class="eyebrow eyebrow-gh">Property Sourcing</span>
+    <h2 class="approach-h2">How we find properties.</h2>
+    <p class="approach-text">We focus on single-family homes and duplexes in Johnston, Franklin, Wake, Lenoir, and Durham counties that meet three criteria: <strong>structurally sound but deteriorated</strong>, located in an established neighborhood rather than a greenfield site, and priced at a level where rehabilitation leads to rents that existing residents can afford.</p>
+    <p class="approach-text">We do not flip properties. We do not pursue portfolio acquisitions that would displace a large number of tenants at once. We work one property at a time, in neighborhoods where we are prepared to be a long-term landlord — not a short-term holder.</p>
+    <p class="approach-text">Sources include: municipal vacancy lists, word of mouth from community members, direct owner outreach on properties that have been listed or vacant for extended periods, and relationships with local housing attorneys and code enforcement officials who can refer properties at risk of condemnation.</p>
+  </div>
+</section>
+
+<!-- REHAB STANDARDS -->
+<section class="approach-section bg-paper">
+  <div class="approach-inner">
+    <span class="eyebrow eyebrow-gh">Rehabilitation Standards</span>
+    <h2 class="approach-h2">What "rehabbed" means to us.</h2>
+    <p class="approach-text">Every property we rehabilitate is brought to a condition we would be comfortable renting to a family member. That is the standard. Below are the specific areas we assess and address in every project.</p>
+    <ul class="standards-list">
+      <li class="standard-item">
+        <div class="standard-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+        <div class="standard-text">
+          <h4>Structural integrity</h4>
+          <p>Foundation, roof, and framing inspected and repaired before any cosmetic work begins. No property goes to market with deferred structural issues.</p>
+        </div>
+      </li>
+      <li class="standard-item">
+        <div class="standard-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/></svg></div>
+        <div class="standard-text">
+          <h4>Electrical and plumbing</h4>
+          <p>All work permitted and inspected by county. We do not use unlicensed contractors for electrical, plumbing, or HVAC — period. A certificate of occupancy is required before any tenant moves in.</p>
+        </div>
+      </li>
+      <li class="standard-item">
+        <div class="standard-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg></div>
+        <div class="standard-text">
+          <h4>HVAC and weatherization</h4>
+          <p>Functioning heating and cooling is not optional. Where budget allows, we upgrade insulation and weatherstripping — both for tenant comfort and to reduce utility costs, which affects what rents are actually reasonable.</p>
+        </div>
+      </li>
+      <li class="standard-item">
+        <div class="standard-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="standard-text">
+          <h4>Health and safety</h4>
+          <p>Lead paint testing on all pre-1978 properties. Mold remediation where found. Working smoke and CO detectors installed in every unit before occupancy.</p>
+        </div>
+      </li>
+      <li class="standard-item">
+        <div class="standard-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div>
+        <div class="standard-text">
+          <h4>Local contractor requirement</h4>
+          <p>We hire contractors who live and work in the county where the project is located. This is a hard rule, not a preference. We track it on every project.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROCESS STEPS -->
+<section class="approach-section">
+  <div class="approach-inner">
+    <span class="eyebrow eyebrow-gh">From Acquisition to Occupancy</span>
+    <h2 class="approach-h2">Our process, step by step.</h2>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <h4>Acquisition</h4>
+        <p>We identify the property, conduct a scope-of-work assessment, and close. No assignment contracts, no wholesaling — we buy and hold.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <h4>Permit &amp; Plan</h4>
+        <p>We pull permits before work begins. All work is scoped in writing with licensed local contractors. Budget and timeline are set before the first nail.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <h4>Rehab</h4>
+        <p>Work is completed to county code, inspected, and documented. We photograph every phase of the project for our records and for partner reporting.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <h4>Lease &amp; Manage</h4>
+        <p>We market to existing neighborhood residents first, conduct standard screening, and manage the property directly — no third-party property manager.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OCCUPIED ACQUISITIONS -->
+<section class="occupied-section">
+  <div class="occupied-inner">
+    <span class="eyebrow eyebrow-gh">A Note for Community Officials</span>
+    <h2 class="approach-h2">How we handle occupied properties.</h2>
+    <p class="approach-text">This is the question that matters most to community leaders, and we answer it directly. Sometimes a property we acquire is occupied — by a tenant who doesn't know the owner has sold, or by an owner-occupant in distress.</p>
+    <div class="occupied-callout">
+      <h3>Our policy, plainly stated:</h3>
+      <div class="occupied-policy">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <p><strong>We do not immediately displace tenants.</strong> If a property is occupied at acquisition, we introduce ourselves, explain the plan, and give the tenant a real choice: stay through the rehab (if safe) and become our tenant at a fair rent, or accept a relocation assistance payment and a 90-day notice period to find another place.</p>
+      </div>
+      <div class="occupied-policy">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <p><strong>We prefer existing tenants who pay and maintain the property.</strong> A long-tenured resident who has been in a house for ten years is not a liability — they are exactly the kind of neighbor that makes a community stable.</p>
+      </div>
+      <div class="occupied-policy">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <p><strong>We comply with all applicable notice and relocation laws</strong> and go beyond them where we can afford to. If a county or city has a right-to-return ordinance, we support it.</p>
+      </div>
+      <div class="occupied-policy">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <p><strong>We will tell you specifically what happened on any property</strong> we have acquired in your jurisdiction. We document every tenant interaction. If a community official or grant partner wants a report on tenant outcomes from our portfolio, we provide it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFICIAL CTA -->
+<div class="official-cta">
+  <div class="official-cta-inner">
+    <h2>Request a meeting.</h2>
+    <p>If you're a municipal official, community land trust, housing authority, or neighborhood association that wants to understand our work before we operate in your area — reach out. We'd rather earn your support before we show up than explain ourselves after.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="partners.html" class="btn btn-gold btn-lg">View Our Track Record</a>
+      <a href="mailto:info@ingeniousdevelopments.com" class="btn btn-outline-gh" style="border-color:rgba(255,255,255,0.3);color:white;">Email Us Directly</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Ingenious Developments</div>
+      <p class="footer-brand-sub">Welcoming those who serve. Protecting those who built.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Homes</h4>
+      <a href="index.html">Overview</a>
+      <a href="our-approach.html">Our Approach</a>
+      <a href="available-homes.html">Available Homes</a>
+      <a href="partners.html">Partners &amp; Funders</a>
+    </div>
+    <div class="footer-col">
+      <h4>Stays</h4>
+      <a href="../stays/index.html">Find a Stay</a>
+      <!-- FOR EMPLOYERS TAB — hidden, restore when needed: <a href="../stays/for-employers.html">For Employers</a> -->
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:info@ingeniousdevelopments.com">info@ingeniousdevelopments.com</a>
+      <a href="tel:+19842126836">(984) 212-6836</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Ingenious Developments LLC · Clayton, NC</span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.mobile-nav a').forEach(a => a.addEventListener('click', () => document.querySelector('.mobile-nav').classList.remove('open')));
+</script>
+</body>
+</html>
+

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ingenious Homes — Rehabilitating Homes. Protecting Communities.</title>
+<link rel="icon" href="../favicon.ico" sizes="48x48">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="description" content="Ingenious Homes acquires and rehabilitates single-family properties in North Carolina so longtime residents can stay in the neighborhoods they built.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+/* Statement hero — text-first, no photo */
+.homes-hero {
+  background: var(--gh-dk); padding: 6rem 2rem 5rem;
+  position: relative; overflow: hidden;
+}
+.homes-hero::before {
+  content: '"';
+  position: absolute; top: -1rem; right: 2rem;
+  font-family: var(--f-display); font-size: 28rem; font-weight: 700;
+  color: rgba(255,255,255,0.03); line-height: 1;
+  pointer-events: none;
+}
+.homes-hero-inner { max-width: var(--max-w); margin: 0 auto; position: relative; }
+.homes-hero-statement {
+  font-family: var(--f-display);
+  font-size: clamp(1.75rem, 3.8vw, 3.25rem);
+  font-weight: 700; color: white; line-height: 1.22;
+  letter-spacing: -0.022em; max-width: 780px; margin-bottom: 2rem;
+}
+.homes-hero-statement em { font-style: italic; color: var(--gold-lt); }
+.homes-hero-sub {
+  font-size: 1.3125rem; font-weight: 300; color: rgba(255,255,255,0.62);
+  max-width: 520px; line-height: 1.7; margin-bottom: 2.5rem;
+}
+
+/* Commitments */
+.commitments { padding: 5.5rem 2rem; background: white; }
+.commitments-inner { max-width: var(--max-w); margin: 0 auto; }
+.commitments-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 3rem;
+}
+.commit-card {
+  border-top: 3px solid var(--gh-dk); padding-top: 1.5rem;
+}
+.commit-num {
+  font-family: var(--f-display); font-size: 2.5rem; font-weight: 700;
+  color: var(--gh-pale); line-height: 1; margin-bottom: 0.875rem;
+}
+.commit-card h3 {
+  font-family: var(--f-display); font-size: 1.3125rem; font-weight: 700;
+  color: var(--ink); margin-bottom: 0.625rem;
+}
+.commit-card p { font-size: 1.3125rem; line-height: 1.7; color: var(--ink-mid); }
+
+/* Story section */
+.homes-story { padding: 5.5rem 2rem; background: var(--paper); }
+.homes-story-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+}
+.story-text p { font-size: 1.3125rem; line-height: 1.8; color: var(--ink-mid); margin-bottom: 1.25rem; }
+.story-text p strong { color: var(--ink); font-weight: 600; }
+.story-aside { padding-top: 1rem; }
+.story-stat-block {
+  border-left: 3px solid var(--gh-dk); padding-left: 1.5rem; margin-bottom: 2.5rem;
+}
+.story-stat-block .num {
+  font-family: var(--f-display); font-size: 2.75rem; font-weight: 700;
+  color: var(--gh-dk); line-height: 1; margin-bottom: 0.3rem;
+}
+.story-stat-block .label { font-size: 1.3125rem; color: var(--ink-mid); font-weight: 500; }
+
+/* Towns served */
+.homes-towns { padding: 5rem 2rem; background: var(--gh-soft); }
+.homes-towns-inner { max-width: var(--max-w); margin: 0 auto; }
+.towns-list {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+  background: var(--border); border: 1px solid var(--border); border-radius: 8px;
+  overflow: hidden; margin-top: 2rem;
+}
+.town-block {
+  background: white; padding: 1.5rem 2rem;
+  display: flex; flex-direction: column; gap: 0.25rem;
+}
+.town-block-name { font-family: var(--f-display); font-size: 1.3125rem; font-weight: 700; color: var(--ink); }
+.town-block-county { font-size: 1.3125rem; color: var(--ink-lt); font-weight: 500; }
+.town-block-status { font-size: 1.3125rem; color: var(--gh-md); font-weight: 600; margin-top: 0.25rem; }
+
+/* CTA section */
+.homes-cta { background: var(--ink); padding: 5rem 2rem; text-align: center; }
+.homes-cta h2 {
+  font-family: var(--f-display); font-size: clamp(1.875rem,3.5vw,2.875rem);
+  font-weight: 700; color: white; margin-bottom: 1rem;
+}
+.homes-cta p { font-size: 1.3125rem; color: rgba(255,255,255,0.55); max-width: 520px; margin: 0 auto 2rem; line-height: 1.7; }
+.homes-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+  .commitments-grid { grid-template-columns: 1fr 1fr; }
+  .homes-story-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .towns-list { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .commitments-grid { grid-template-columns: 1fr; }
+  .towns-list { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body class="page-body-sub">
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">
+      <span class="nav-brand-main">Ingenious Developments</span>
+      <span class="nav-brand-sub">Clayton, North Carolina</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../stays/index.html">Stays</a></li>
+      <li><a href="index.html" class="nav-active">Homes</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../stays/book.html" class="nav-cta">Find a Stay</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <a href="index.html">Homes Home</a>
+  <a href="our-approach.html">Our Approach</a>
+  <a href="available-homes.html">Available Homes</a>
+  <a href="partners.html">Partners &amp; Funders</a>
+  <a href="../stays/book.html" style="color:var(--gold);font-weight:700;">Find a Stay →</a>
+</div>
+
+<!-- SUBNAV -->
+<nav class="subnav subnav-gh">
+  <div class="subnav-inner">
+    <a href="../index.html" class="subnav-back">← Home</a>
+    <a href="index.html" class="active">Overview</a>
+    <a href="our-approach.html">Our Approach</a>
+    <a href="available-homes.html">Available Homes</a>
+    <a href="partners.html">Partners &amp; Funders</a>
+  </div>
+</nav>
+
+<!-- HERO: statement first, no photo -->
+<div class="homes-hero">
+  <div class="homes-hero-inner">
+    <span class="eyebrow eyebrow-gold">Ingenious Homes</span>
+    <h1 class="homes-hero-statement">
+      Revitalization should lift a community up,<br>
+      <em>not price its people out.</em>
+    </h1>
+    <p class="homes-hero-sub">We acquire and rehabilitate single-family properties in North Carolina — hiring local contractors, keeping rents attainable, and giving existing residents a real path to stay in the neighborhoods they built.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="our-approach.html" class="btn btn-gold">How We Work →</a>
+      <a href="partners.html" class="btn btn-outline-gh" style="border-color:rgba(255,255,255,0.3);color:white;">Partners &amp; Funders</a>
+    </div>
+  </div>
+</div>
+
+<!-- OUR COMMITMENTS -->
+<section class="commitments">
+  <div class="commitments-inner">
+    <span class="eyebrow eyebrow-gh">What We Stand For</span>
+    <h2 class="section-title">Three commitments, in plain language.</h2>
+    <div class="commitments-grid">
+      <div class="commit-card">
+        <div class="commit-num">01</div>
+        <h3>Local contractors first.</h3>
+        <p>Every rehab project goes to contractors who live and work in the same county. Not because it's required — because it's right. The money should stay in the community.</p>
+      </div>
+      <div class="commit-card">
+        <div class="commit-num">02</div>
+        <h3>Attainable rents.</h3>
+        <p>We target rents that a healthcare worker, a school bus driver, or a longtime resident can actually afford. A rehabbed house that only a transplant can afford is not community investment.</p>
+      </div>
+      <div class="commit-card">
+        <div class="commit-num">03</div>
+        <h3>Existing residents get first consideration.</h3>
+        <p>When a rehabbed property is ready to rent, people already living in the neighborhood hear about it first. That is not a policy — it is the point.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="homes-story">
+  <div class="homes-story-inner">
+    <div class="story-text">
+      <span class="eyebrow eyebrow-gh">The Problem We're Working On</span>
+      <h2 class="section-title">Watching people get pushed out.</h2>
+      <div class="rule" style="background:var(--gh-dk);"></div>
+      <p>Working on distressed properties in Clayton, we watched families face being pushed out of the towns they had spent their lives in. Not because they wanted to leave. Because the housing stock deteriorated, rents elsewhere climbed, and no one was investing in their blocks.</p>
+      <p>That is the problem this side of the company was built to work on. We acquire properties that would otherwise sit vacant or deteriorate further, rehabilitate them to a livable standard, and rent them at rates that serve the people who already live in the neighborhood.</p>
+      <p><strong>This is not charity. It is a business model.</strong> A well-maintained rental property in a stable community appreciates. A vacant, blighted property drags everything around it down. We are building a portfolio that proves these goals are not in conflict.</p>
+      <a href="our-approach.html" class="btn btn-gh" style="margin-top:1rem;">See how we approach rehab →</a>
+    </div>
+    <div class="story-aside">
+      <div class="story-stat-block">
+        <div class="num">2024</div>
+        <div class="label">Year founded in Clayton, NC</div>
+      </div>
+      <div class="story-stat-block">
+        <div class="num">6</div>
+        <div class="label">NC counties in our growth plan</div>
+      </div>
+      <div class="story-stat-block">
+        <div class="num">1–2</div>
+        <div class="label">New properties acquired per year — our near-term target</div>
+      </div>
+      <div class="callout callout-gh" style="margin-top:1.5rem;">
+        <p style="font-size:1.3125rem;line-height:1.7;color:var(--ink-mid);">Beginning in Clayton and expanding to Louisburg, Wake Forest, Knightdale, Southeast Raleigh, and Durham — communities where longtime residents are at risk of displacement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOWNS -->
+<section class="homes-towns">
+  <div class="homes-towns-inner">
+    <span class="eyebrow eyebrow-gh">Our Footprint</span>
+    <h2 class="section-title">Six counties. Growing from Clayton.</h2>
+    <div class="towns-list">
+      <div class="town-block">
+        <div class="town-block-name">Clayton</div>
+        <div class="town-block-county">Johnston County</div>
+        <div class="town-block-status">● Active</div>
+      </div>
+      <div class="town-block">
+        <div class="town-block-name">Louisburg</div>
+        <div class="town-block-county">Franklin County</div>
+        <div class="town-block-status">Planned 2029</div>
+      </div>
+      <div class="town-block">
+        <div class="town-block-name">Wake Forest</div>
+        <div class="town-block-county">Wake County</div>
+        <div class="town-block-status">Planned 2029</div>
+      </div>
+      <div class="town-block">
+        <div class="town-block-name">Knightdale</div>
+        <div class="town-block-county">Wake County</div>
+        <div class="town-block-status">Planned 2029–30</div>
+      </div>
+      <div class="town-block">
+        <div class="town-block-name">Southeast Raleigh</div>
+        <div class="town-block-county">Wake County</div>
+        <div class="town-block-status">Planned 2030</div>
+      </div>
+      <div class="town-block">
+        <div class="town-block-name">Durham</div>
+        <div class="town-block-county">Durham County</div>
+        <div class="town-block-status">Planned 2030</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="homes-cta">
+  <h2>Interested in partnering?</h2>
+  <p>If you're a lender, grant program, local government, or community organization that wants to support attainable housing in North Carolina, we'd like to talk.</p>
+  <div class="homes-cta-btns">
+    <a href="partners.html" class="btn btn-gold btn-lg">View Our Track Record</a>
+    <a href="our-approach.html" class="btn btn-outline-gh" style="border-color:rgba(255,255,255,0.3);color:white;">Our Rehab Approach</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Ingenious Developments</div>
+      <p class="footer-brand-sub">Welcoming those who serve. Protecting those who built.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Homes</h4>
+      <a href="index.html">Overview</a>
+      <a href="our-approach.html">Our Approach</a>
+      <a href="available-homes.html">Available Homes</a>
+      <a href="partners.html">Partners &amp; Funders</a>
+    </div>
+    <div class="footer-col">
+      <h4>Stays</h4>
+      <a href="../stays/index.html">Find a Stay</a>
+      <!-- FOR EMPLOYERS TAB — hidden, restore when needed: <a href="../stays/for-employers.html">For Employers</a> -->
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:info@ingeniousdevelopments.com">info@ingeniousdevelopments.com</a>
+      <a href="tel:+19842126836">(984) 212-6836</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Ingenious Developments LLC · Clayton, NC</span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.mobile-nav a').forEach(a => a.addEventListener('click', () => document.querySelector('.mobile-nav').classList.remove('open')));
+</script>
+</body>
+</html>
+

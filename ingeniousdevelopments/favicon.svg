@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="16" fill="#F9F6F1"/>
+  <!-- Roof mark from brand_assets/ingenious-developments-stacked-tagline.svg, centred -->
+  <g transform="translate(50,50) scale(1.02) translate(-50,-58.5)">
+    <polygon points="7,62 47,22 47,36 7,76" fill="#2C5545"/>
+    <polygon points="93,62 53,22 53,36 93,76" fill="#2C5545"/>
+    <rect x="7" y="84" width="86" height="11" fill="#A6462E"/>
+  </g>
+</svg>

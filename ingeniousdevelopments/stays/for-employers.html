@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corporate Housing for Traveling Professionals — Ingenious Stays</title>
+<link rel="icon" href="../favicon.ico" sizes="48x48">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="description" content="Furnished corporate housing in Clayton, NC for staffing agencies, hospital HR, and construction GCs. Direct billing, net-30, 13-week contracts. Call (984) 212-6836.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+.employer-hero {
+  background: var(--gs-dk); padding: 5rem 2rem 4rem;
+}
+.employer-hero-inner { max-width: var(--max-w); margin: 0 auto; }
+.employer-hero h1 {
+  font-family: var(--f-display);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 700; color: white; line-height: 1.12;
+  letter-spacing: -0.022em; margin-bottom: 1rem; max-width: 700px;
+}
+.employer-hero-sub {
+  font-size: 1.3125rem; font-weight: 300;
+  color: rgba(255,255,255,0.7); max-width: 560px; line-height: 1.65; margin-bottom: 2rem;
+}
+.hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-contact-card {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18);
+  border-radius: var(--r); padding: 0.875rem 1.375rem;
+  display: flex; align-items: center; gap: 0.875rem;
+}
+.hero-contact-card span { font-size: 1.3125rem; color: rgba(255,255,255,0.55); display: block; margin-bottom: 2px; }
+.hero-contact-card a { color: white; text-decoration: none; font-weight: 600; font-size: 1.3125rem; overflow-wrap: anywhere; }
+.hero-contact-card > div { min-width: 0; }
+.hero-contact-card a:hover { text-decoration: underline; }
+
+/* Content sections */
+.emp-section { padding: 4rem 2rem; }
+.emp-inner { max-width: var(--max-w); margin: 0 auto; }
+.emp-h2 {
+  font-family: var(--f-display); font-size: 1.5rem; font-weight: 700;
+  color: var(--ink); margin-bottom: 1.25rem; letter-spacing: -0.015em;
+}
+.emp-text { font-size: 1.3125rem; line-height: 1.78; color: var(--ink-mid); margin-bottom: 1rem; }
+
+/* Billing callout — the key differentiator */
+.billing-callout {
+  background: var(--gs-soft); border: 2px solid var(--gs-dk);
+  border-radius: 8px; padding: 2.5rem;
+}
+.billing-callout h2 {
+  font-family: var(--f-display); font-size: 1.375rem; font-weight: 700;
+  color: var(--gs-dk); margin-bottom: 0.375rem;
+}
+.billing-callout .billing-sub {
+  font-size: 1.3125rem; color: var(--ink-mid); margin-bottom: 1.75rem; font-weight: 500;
+}
+.billing-grid {
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem;
+}
+.billing-item {
+  background: white; border: 1px solid rgba(26,71,49,0.15);
+  border-radius: 6px; padding: 1.125rem 1.375rem;
+}
+.billing-item-label { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-lt); margin-bottom: 0.375rem; }
+.billing-item-val { font-size: 1.3125rem; font-weight: 600; color: var(--ink); }
+
+/* Inclusions list */
+.inc-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.625rem; margin-top: 1rem; }
+.inc-item {
+  display: flex; align-items: center; gap: 0.625rem;
+  font-size: 1.3125rem; color: var(--ink-mid); padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-lt);
+}
+.inc-item svg { stroke: var(--gs-md); flex-shrink: 0; }
+
+/* Terms grid */
+.terms-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 1.25rem; }
+.term-card {
+  background: white; border: 1px solid var(--border);
+  border-radius: 6px; padding: 1.375rem;
+}
+.term-label { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gs-md); margin-bottom: 0.5rem; }
+.term-val { font-family: var(--f-display); font-size: 1.3125rem; font-weight: 700; color: var(--ink); margin-bottom: 0.25rem; }
+.term-note { font-size: 1.3125rem; color: var(--ink-lt); }
+
+/* Contact closer */
+.contact-closer {
+  background: var(--ink); padding: 4.5rem 2rem;
+}
+.contact-closer-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+}
+.contact-closer h2 {
+  font-family: var(--f-display); font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700; color: white; line-height: 1.2; margin-bottom: 1rem;
+}
+.contact-closer p { font-size: 1.3125rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+.contact-person-card {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 2.5rem;
+}
+.contact-person-name {
+  font-family: var(--f-display); font-size: 1.375rem; font-weight: 700;
+  color: white; margin-bottom: 0.2rem;
+}
+.contact-person-title { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-bottom: 1.75rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+.contact-method {
+  display: flex; align-items: center; gap: 0.875rem;
+  margin-bottom: 1rem;
+}
+.contact-method a { font-size: 1.3125rem; font-weight: 600; color: white; text-decoration: none; overflow-wrap: anywhere; }
+.contact-method > div { min-width: 0; }
+.contact-method a:hover { color: var(--gold-lt); }
+.contact-method svg { stroke: var(--gold); flex-shrink: 0; }
+.contact-method span { font-size: 0.73rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 2px; }
+.pdf-link {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.8rem; color: rgba(255,255,255,0.45); text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.15); border-radius: var(--r);
+  padding: 0.5rem 1rem; margin-top: 1.75rem; transition: all 0.18s;
+}
+.pdf-link:hover { color: white; border-color: rgba(255,255,255,0.35); }
+
+/* Table */
+.inventory-wrap { overflow-x: auto; margin-top: 1.25rem; }
+
+/* Social proof strip */
+.proof-strip { background: var(--gs-pale); padding: 1.5rem 2rem; text-align: center; }
+.proof-strip p { font-size: 1.3125rem; color: var(--gs-dk); font-weight: 600; }
+.proof-strip span { font-weight: 400; color: var(--ink-mid); }
+
+@media (max-width: 900px) {
+  .billing-grid { grid-template-columns: 1fr; }
+  .terms-grid   { grid-template-columns: 1fr 1fr; }
+  .inc-list     { grid-template-columns: 1fr; }
+  .contact-closer-inner { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+}
+@media (max-width: 640px) {
+  .terms-grid { grid-template-columns: 1fr; }
+  .contact-person-card { padding: 1.5rem; }
+}
+</style>
+</head>
+<body class="page-body-sub">
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">
+      <span class="nav-brand-main">Ingenious Developments</span>
+      <span class="nav-brand-sub">Clayton, North Carolina</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-active">Stays</a></li>
+      <li><a href="../homes/index.html">Homes</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="book.html" class="nav-cta">Book Now</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <a href="index.html">Stays Home</a>
+  <a href="properties.html">All Properties</a>
+  <!-- FOR EMPLOYERS TAB — hidden, restore when needed: <a href="for-employers.html">For Employers</a> -->
+  <a href="book.html" style="color:var(--gold);font-weight:700;">Book Now →</a>
+</div>
+
+<!-- SUBNAV -->
+<nav class="subnav subnav-gs">
+  <div class="subnav-inner">
+    <a href="../index.html" class="subnav-back">← Home</a>
+    <a href="index.html">Overview</a>
+    <a href="properties.html">Properties</a>
+    <!-- FOR EMPLOYERS TAB — hidden, restore when needed: <a href="for-employers.html" class="active">For Employers</a> -->
+    <a href="book.html">Book Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="employer-hero">
+  <div class="employer-hero-inner">
+    <span class="eyebrow eyebrow-gold">For Staffing Agencies · Hospital HR · Construction GCs</span>
+    <h1>Corporate housing in Clayton, NC — billed directly to your company.</h1>
+    <p class="employer-hero-sub">Fully furnished homes for traveling professionals placed near Johnston Health, WakeMed, and UNC Rex. We invoice the company, not the worker. Net-30. No third-party platform, no per-booking fees.</p>
+    <div class="hero-cta-row">
+      <div class="hero-contact-card">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-lt)" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l.36-.36a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <div>
+          <span>Direct line</span>
+          <!-- UPDATE: Replace with your actual phone number -->
+          <a href="tel:+19842126836">(984) 212-6836</a>
+        </div>
+      </div>
+      <div class="hero-contact-card">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-lt)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <div>
+          <span>Email</span>
+          <a href="mailto:info@ingeniousdevelopments.com">info@ingeniousdevelopments.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SOCIAL PROOF STRIP -->
+<div class="proof-strip">
+  <p>40+ traveling professionals and guests housed since 2025. <span>Nurses, contractors, flight attendants, and business travelers.</span></p>
+</div>
+
+<!-- INVENTORY -->
+<section class="emp-section bg-paper">
+  <div class="emp-inner">
+    <span class="eyebrow eyebrow-gs">Current Inventory</span>
+    <h2 class="emp-h2">Available units</h2>
+    <p class="emp-text">All units are fully furnished and ready for immediate placement. Contact us to confirm current availability before submitting a placement.</p>
+    <div class="inventory-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Unit</th>
+            <th>Beds / Baths</th>
+            <th>Town</th>
+            <th>Johnston Health</th>
+            <th>WakeMed Raleigh</th>
+            <th>UNC Rex</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cozy Clayton Get Away</strong><br><span style="font-size:0.78rem;">157 E Wilson St area</span></td>
+            <td>3 bd / 2 ba</td>
+            <td>Clayton, NC</td>
+            <td>~5 min</td>
+            <td>~30 min</td>
+            <td>~35 min</td>
+            <td><span class="badge badge-available">Available</span></td>
+          </tr>
+          <tr>
+            <td><strong>Unit 2</strong><br><span style="font-size:0.78rem;">Clayton area</span></td>
+            <td>— / —</td>
+            <td>Clayton, NC</td>
+            <td>~10 min</td>
+            <td>~30 min</td>
+            <td>~35 min</td>
+            <td><span class="badge badge-soon">Coming Soon</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:1.3125rem;color:var(--ink-lt);margin-top:0.875rem;">New units added throughout 2025–2026. <a href="book.html" style="color:var(--gs-dk);font-weight:600;">Join our waitlist →</a></p>
+  </div>
+</section>
+
+<!-- BILLING — highlighted as key differentiator -->
+<section class="emp-section">
+  <div class="emp-inner">
+    <div class="billing-callout">
+      <span class="eyebrow eyebrow-gs" style="margin-bottom:0.5rem;">Billing &amp; Compliance</span>
+      <h2>We invoice your company directly.</h2>
+      <p class="billing-sub">No asking your worker to front costs. No expense reimbursement delays. This is the difference between a landlord and a corporate housing provider.</p>
+      <div class="billing-grid">
+        <div class="billing-item">
+          <div class="billing-item-label">Invoice terms</div>
+          <div class="billing-item-val">Net-30</div>
+        </div>
+        <div class="billing-item">
+          <div class="billing-item-label">W-9</div>
+          <div class="billing-item-val">On file · available on request</div>
+        </div>
+        <div class="billing-item">
+          <div class="billing-item-label">Certificate of Insurance</div>
+          <div class="billing-item-val">Available on request</div>
+        </div>
+        <div class="billing-item">
+          <div class="billing-item-label">Platform / booking fee</div>
+          <div class="billing-item-val">None — direct relationship</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTRACT TERMS -->
+<section class="emp-section bg-paper">
+  <div class="emp-inner">
+    <span class="eyebrow eyebrow-gs">Contract Terms</span>
+    <h2 class="emp-h2">Designed for assignment cycles.</h2>
+    <div class="terms-grid">
+      <div class="term-card">
+        <div class="term-label">Standard contract</div>
+        <div class="term-val">13 weeks</div>
+        <div class="term-note">Matches the standard travel nurse assignment length</div>
+      </div>
+      <div class="term-card">
+        <div class="term-label">Minimum stay</div>
+        <div class="term-val">4 weeks</div>
+        <div class="term-note">For shorter placements or trial periods</div>
+      </div>
+      <div class="term-card">
+        <div class="term-label">Extensions</div>
+        <div class="term-val">Month-to-month</div>
+        <div class="term-note">With 14-day written notice from either party</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUSIONS -->
+<section class="emp-section">
+  <div class="emp-inner">
+    <span class="eyebrow eyebrow-gs">What's Included</span>
+    <h2 class="emp-h2">Everything your worker needs. Nothing to set up.</h2>
+    <p class="emp-text">Your placement arrives to a ready home. No furniture delivery, no utility setup, no WiFi calls. The rate covers everything below.</p>
+    <div class="inc-list">
+      <div class="inc-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Fully furnished (beds, sofa, dining, desks)</div>
+      <div class="inc-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Linens and towels for all bedrooms</div>
+      <div class="inc-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Fully equipped kitchen with cookware</div>
+      <div class="inc-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>In-unit washer and dryer</div>
+      <div class="inc-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>High-speed WiFi</div>
+      <div class="inc-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>All utilities (electric, water, gas)</div>
+      <div class="inc-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Free private parking</div>
+      <div class="inc-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Smart TV with streaming apps</div>
+    </div>
+  </div>
+</section>
+
+<!-- POLICIES -->
+<section class="emp-section bg-paper">
+  <div class="emp-inner">
+    <span class="eyebrow eyebrow-gs">Policies</span>
+    <h2 class="emp-h2">What you need to know upfront.</h2>
+    <table class="data-table" style="margin-top:1.25rem;">
+      <thead>
+        <tr><th>Topic</th><th>Policy</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Pets</strong></td>
+          <td>No pets.</td>
+        </tr>
+        <tr>
+          <td><strong>Early termination</strong></td>
+          <td>30-day written notice required. Pro-rated refund for the remaining term beyond 30 days.</td>
+        </tr>
+        <tr>
+          <td><strong>Contract extension</strong></td>
+          <td>Month-to-month with 14-day notice. Extensions are subject to availability — notify us early.</td>
+        </tr>
+        <tr>
+          <td><strong>Guest changes</strong></td>
+          <td>We work with the company, not the individual. Worker changes within the same placement are handled via notice to us.</td>
+        </tr>
+        <tr>
+          <td><strong>Damages</strong></td>
+          <td>Security deposit equal to one month's rent, invoiced at the same time as the first payment.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CONTACT CLOSER -->
+<div class="contact-closer">
+  <div class="contact-closer-inner">
+    <div>
+      <h2>Ready to place someone?</h2>
+      <p>We keep this simple. Reach out with the placement dates, bed count needed, and whether you need direct billing. We'll confirm availability and send a contract within 24 hours.</p>
+      <p style="margin-top:1.25rem;">We've housed 40+ professionals since 2025. Nurses and contractors tell us the biggest difference is the washer/dryer and the full kitchen — two things extended-stay hotels almost never get right.</p>
+    </div>
+    <div class="contact-person-card">
+      <div class="contact-person-name">
+        <!-- UPDATE: Replace with your name -->
+        Cornelius Flowers
+      </div>
+      <div class="contact-person-title">Founder · Ingenious Stays</div>
+      <div class="contact-method">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l.36-.36a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <div>
+          <span>Direct line</span>
+          <!-- UPDATE: Replace with your phone -->
+          <a href="tel:+19842126836">(984) 212-6836</a>
+        </div>
+      </div>
+      <div class="contact-method">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <div>
+          <span>Email</span>
+          <a href="mailto:info@ingeniousdevelopments.com">info@ingeniousdevelopments.com</a>
+        </div>
+      </div>
+      <a href="../assets/ingenious-stays-employer-one-pager.pdf" download class="pdf-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download one-page summary PDF
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Ingenious Developments</div>
+      <p class="footer-brand-sub">Welcoming those who serve. Protecting those who built.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Stays</h4>
+      <a href="index.html">Overview</a>
+      <a href="properties.html">All Properties</a>
+      <!-- FOR EMPLOYERS TAB — hidden, restore when needed: <a href="for-employers.html">For Employers</a> -->
+      <a href="book.html">Book Now</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="../index.html">Home</a>
+      <a href="../homes/index.html">Homes</a>
+      <a href="../index.html#about">About</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:info@ingeniousdevelopments.com">info@ingeniousdevelopments.com</a>
+      <a href="tel:+19842126836">(984) 212-6836</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Ingenious Developments LLC · Clayton, NC</span>
+    <a href="../assets/ingenious-stays-employer-one-pager.pdf" download style="font-size:0.73rem;color:rgba(255,255,255,0.3);text-decoration:none;">↓ Employer One-Pager PDF</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.mobile-nav a').forEach(a => a.addEventListener('click', () => document.querySelector('.mobile-nav').classList.remove('open')));
+</script>
+</body>
+</html>
+

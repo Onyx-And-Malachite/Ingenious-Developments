@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ingenious Stays — Thoughtful Stays, Made Simple</title>
+<meta name="description" content="Ingenious Stays offers refined short-term rentals for professionals, families, and travelers who expect more from where they rest.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garant:ital,wght@0,400;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c-deep:     #0D2015;
+  --c-mid:      #173524;
+  --c-light:    #2A5240;
+  --c-gold:     #B8965A;
+  --c-gold-lt:  #D4B483;
+  --c-gold-pale:#F8F3EA;
+  --c-white:    #FFFFFF;
+  --c-sage:     #F5F0E8;
+  --c-text:     #111C14;
+  --c-text-mid: #4A6050;
+  --c-text-lt:  #8AA498;
+  --f-display:  'Playfair Display', Georgia, serif;
+  --f-accent:   'Cormorant Garant', Georgia, serif;
+  --f-body:     'Inter', -apple-system, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--f-body); color: var(--c-text); background: var(--c-white); -webkit-font-smoothing: antialiased; }
+
+/* Offset anchor targets so fixed nav doesn't cover them */
+section { scroll-margin-top: 220px; }
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 220px; background: var(--c-deep);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem;
+  border-bottom: 1px solid rgba(184,150,90,0.18);
+}
+.nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+.nav-logo img { height: 200px; width: auto; display: block; }
+.nav-links { display: flex; align-items: center; gap: 2.25rem; list-style: none; }
+.nav-links a {
+  color: rgba(255,255,255,0.75); text-decoration: none;
+  font-size: 1rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.nav-active { color: var(--c-gold); }
+.btn-nav {
+  background: var(--c-gold); color: var(--c-deep);
+  padding: 0.75rem 1.75rem; border-radius: 4px;
+  font-family: var(--f-body); font-weight: 700; font-size: 0.95rem; letter-spacing: 0.04em; text-transform: uppercase;
+  text-decoration: none; transition: background 0.2s, transform 0.15s;
+}
+.btn-nav:hover { background: var(--c-gold-lt); transform: translateY(-1px); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: white; transition: transform 0.25s, opacity 0.25s; }
+.mobile-menu {
+  display: none; position: fixed; top: 220px; left: 0; right: 0;
+  background: var(--c-deep); z-index: 99;
+  padding: 1.5rem 2rem 2rem;
+  border-bottom: 1px solid rgba(184,150,90,0.2);
+}
+.mobile-menu.open { display: block; }
+.mobile-menu a {
+  display: block; color: rgba(255,255,255,0.75); text-decoration: none;
+  font-size: 0.875rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 0.875rem 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.mobile-menu .btn-nav { display: inline-block; margin-top: 1.25rem; }
+
+/* BUTTONS */
+.btn-primary {
+  background: var(--c-gold); color: var(--c-deep);
+  padding: 0.875rem 2rem; border-radius: 4px;
+  font-family: var(--f-body); font-weight: 600; font-size: 0.875rem; letter-spacing: 0.04em;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+  transition: background 0.2s, transform 0.15s; border: none; cursor: pointer;
+}
+.btn-primary:hover { background: var(--c-gold-lt); transform: translateY(-2px); }
+.btn-primary:active { transform: translateY(0); }
+.btn-sm { padding: 0.5rem 1.125rem; font-size: 0.8rem; }
+.btn-outline {
+  background: transparent; color: white;
+  padding: 0.875rem 2rem; border-radius: 4px;
+  font-family: var(--f-body); font-weight: 500; font-size: 0.875rem; letter-spacing: 0.04em;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+  border: 1px solid rgba(255,255,255,0.32); transition: border-color 0.2s, background 0.2s, transform 0.15s; cursor: pointer;
+}
+.btn-outline:hover { border-color: rgba(255,255,255,0.65); background: rgba(255,255,255,0.06); transform: translateY(-2px); }
+.btn-dark {
+  background: var(--c-deep); color: white;
+  padding: 0.875rem 2rem; border-radius: 4px;
+  font-family: var(--f-body); font-weight: 600; font-size: 0.875rem; letter-spacing: 0.04em;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+  transition: background 0.2s, transform 0.15s; border: none; cursor: pointer;
+}
+.btn-dark:hover { background: var(--c-mid); transform: translateY(-2px); }
+.btn-ghost {
+  background: transparent; color: var(--c-gold); padding: 0.875rem 0;
+  font-family: var(--f-body); font-weight: 600; font-size: 0.875rem; letter-spacing: 0.04em;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+  border: none; border-bottom: 1px solid var(--c-gold); cursor: pointer;
+  transition: gap 0.2s, opacity 0.2s;
+}
+.btn-ghost:hover { gap: 0.875rem; opacity: 0.8; }
+
+/* HERO */
+.hero {
+  min-height: 100vh; background-color: var(--c-deep);
+  position: relative; display: flex; align-items: center; overflow: hidden;
+  padding-top: 220px;
+}
+.hero-pattern {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0.065;
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23B8965A' stroke-width='0.5'%3E%3Crect x='8' y='8' width='104' height='104'/%3E%3Crect x='24' y='24' width='72' height='72'/%3E%3Cline x1='60' y1='0' x2='60' y2='120'/%3E%3Cline x1='0' y1='60' x2='120' y2='60'/%3E%3Ccircle cx='60' cy='60' r='10' stroke-dasharray='2 5'/%3E%3Ccircle cx='60' cy='60' r='32' stroke-dasharray='2 8' opacity='0.5'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 120px 120px;
+}
+.hero-glow {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 75% 70% at 68% 50%, rgba(13,40,22,0.5) 0%, transparent 70%),
+              radial-gradient(ellipse 45% 55% at 5% 85%, rgba(184,150,90,0.08) 0%, transparent 60%);
+}
+.hero-inner { position: relative; z-index: 2; max-width: 72rem; margin: 0 auto; padding: 5rem 2rem 4rem; width: 100%; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--c-gold); margin-bottom: 2rem;
+}
+.eyebrow::before, .eyebrow::after { content: ''; display: block; width: 28px; height: 1px; background: var(--c-gold); opacity: 0.55; }
+.eyebrow-lg { font-size: 2.8rem; letter-spacing: 0.06em; }
+.eyebrow-lg::before, .eyebrow-lg::after { width: 72px; height: 2px; }
+.hero h1 {
+  font-family: var(--f-display);
+  font-size: clamp(3rem, 6.5vw, 5.75rem);
+  font-weight: 700; color: white; line-height: 1.06; letter-spacing: -0.025em;
+  max-width: 860px; margin-bottom: 1.75rem;
+}
+.hero h1 em { font-style: italic; color: var(--c-gold-lt); }
+.hero-sub { font-size: 1.1rem; font-weight: 300; line-height: 1.72; color: rgba(255,255,255,0.6); max-width: 510px; margin-bottom: 2.75rem; }
+.btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+.scroll-indicator { position: absolute; bottom: 2.25rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.scroll-line { width: 1px; height: 44px; background: linear-gradient(to bottom, rgba(184,150,90,0.7), transparent); animation: pulse-line 2.2s ease-in-out infinite; }
+@keyframes pulse-line { 0%,100%{opacity:0.3;transform:scaleY(1)} 50%{opacity:0.9;transform:scaleY(0.55)} }
+.scroll-text { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); }
+
+/* TRUST STRIP */
+.trust-strip { background: white; border-bottom: 1px solid #E6ECE8; padding: 1.375rem 2rem; }
+.trust-inner { max-width: 72rem; margin: 0 auto; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 0.6rem; }
+.trust-icon { width: 17px; height: 17px; color: var(--c-gold); flex-shrink: 0; }
+.trust-label { font-size: 0.8125rem; font-weight: 500; color: var(--c-text-mid); }
+.trust-label strong { color: var(--c-text); font-weight: 600; }
+
+/* SECTIONS */
+.section { padding: 6rem 2rem; }
+.section-inner { max-width: 72rem; margin: 0 auto; }
+.section-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-gold); margin-bottom: 0.75rem; }
+.section-title { font-family: var(--f-display); font-size: clamp(1.85rem, 3.5vw, 3rem); font-weight: 600; line-height: 1.13; letter-spacing: -0.02em; color: var(--c-text); margin-bottom: 1.125rem; }
+.section-sub { font-size: 1rem; font-weight: 300; line-height: 1.72; color: var(--c-text-mid); max-width: 540px; }
+.gold-bar { width: 36px; height: 2px; background: var(--c-gold); margin: 1.375rem 0; }
+.bg-sage { background: var(--c-sage); }
+
+/* LIGHT SECTION HEADER (for About and Contact sections — matches logo ivory + green + gold palette) */
+.section-dark-hd {
+  background: var(--c-gold-pale); padding: 5.5rem 2rem 4rem; position: relative; overflow: hidden;
+  border-bottom: 1px solid rgba(184,150,90,0.2);
+}
+.section-dark-hd::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%231E2C44' stroke-width='0.5'%3E%3Crect x='8' y='8' width='104' height='104'/%3E%3Cline x1='60' y1='0' x2='60' y2='120'/%3E%3Cline x1='0' y1='60' x2='120' y2='60'/%3E%3Ccircle cx='60' cy='60' r='10' stroke-dasharray='2 5'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 120px 120px;
+}
+.section-dark-hd-inner { max-width: 72rem; margin: 0 auto; position: relative; z-index: 1; }
+.section-dark-hd h2 { font-family: var(--f-display); font-size: clamp(2.25rem, 4.5vw, 4rem); font-weight: 700; color: var(--c-deep); line-height: 1.08; letter-spacing: -0.025em; max-width: 680px; margin-bottom: 1.125rem; }
+.section-dark-hd h2 em { font-style: italic; color: var(--c-gold); }
+.section-dark-hd p { font-size: 1.05rem; font-weight: 300; line-height: 1.72; color: var(--c-text-mid); max-width: 520px; }
+
+/* WHY CARDS */
+.why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3.5rem; }
+.why-card { background: white; border: 1px solid #E2EAE4; border-radius: 8px; padding: 2rem; transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s; }
+.why-card:hover { box-shadow: 0 10px 36px rgba(13,31,20,0.1), 0 2px 8px rgba(13,31,20,0.04); transform: translateY(-4px); border-color: var(--c-gold); }
+.why-icon { width: 46px; height: 46px; background: var(--c-gold-pale); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+.why-icon svg { width: 22px; height: 22px; stroke: var(--c-gold); fill: none; }
+.why-card h3 { font-family: var(--f-display); font-size: 1.2rem; font-weight: 600; color: var(--c-text); margin-bottom: 0.6rem; }
+.why-card p { font-size: 0.9rem; line-height: 1.68; color: var(--c-text-mid); }
+
+/* FEATURED PROPERTY */
+.property-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4.5rem; align-items: center; margin-top: 3rem; }
+.prop-gallery { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 240px 155px; gap: 0.625rem; }
+.prop-gallery img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; }
+.prop-gallery img:first-child { grid-row: 1 / 3; }
+.prop-info h3 { font-family: var(--f-display); font-size: 1.8rem; font-weight: 600; color: var(--c-text); margin-bottom: 0.75rem; }
+.prop-info p { font-size: 0.9375rem; line-height: 1.7; color: var(--c-text-mid); margin-bottom: 1.5rem; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+.tag { background: white; border: 1px solid #D6E0D9; color: var(--c-text-mid); padding: 0.325rem 0.875rem; border-radius: 100px; font-size: 0.78rem; font-weight: 500; }
+
+/* TESTIMONIALS */
+.testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3.5rem; }
+.tcard { background: white; border-radius: 8px; padding: 2rem; position: relative; border-bottom: 3px solid transparent; transition: border-color 0.25s; box-shadow: 0 1px 4px rgba(13,31,20,0.05); }
+.tcard:hover { border-bottom-color: var(--c-gold); }
+.tcard-quote { font-family: var(--f-display); font-size: 5rem; color: var(--c-gold); opacity: 0.18; position: absolute; top: 0.375rem; left: 1.25rem; line-height: 1; pointer-events: none; }
+.tcard-stars { display: flex; gap: 2px; margin-bottom: 1rem; }
+.tcard-stars svg { width: 14px; height: 14px; fill: var(--c-gold); }
+.tcard p { font-size: 0.9rem; line-height: 1.7; color: var(--c-text-mid); margin-bottom: 1.25rem; position: relative; z-index: 1; }
+.tcard-name { font-size: 0.8125rem; font-weight: 600; color: var(--c-text); }
+.tcard-role { font-size: 0.75rem; color: var(--c-text-lt); margin-top: 0.125rem; }
+
+/* ABOUT SNIPPET on home */
+.about-snip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.about-snip-img { position: relative; }
+.about-snip-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; display: block; }
+.about-img-accent { position: absolute; bottom: -1.5rem; right: -1.5rem; width: 110px; height: 110px; background: #FFFFFF; border: 2px solid rgba(184,150,90,0.5); border-radius: 8px; z-index: -1; }
+
+/* ─── STAY LISTING ─── */
+.stay-listing-hero { position: relative; height: 52vh; min-height: 360px; overflow: hidden; }
+.stay-listing-hero img { width: 100%; height: 100%; object-fit: cover; }
+.stay-listing-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(30,44,68,0.88) 0%, rgba(30,44,68,0.15) 65%); display: flex; align-items: flex-end; padding: 3rem; }
+.stay-listing-overlay h2 { font-family: var(--f-display); font-size: clamp(2.25rem, 4.5vw, 3.75rem); font-weight: 700; color: white; letter-spacing: -0.022em; margin-bottom: 0.5rem; }
+.stay-listing-overlay p { font-size: 1rem; color: rgba(255,255,255,0.7); }
+.filter-bar { background: white; border-bottom: 1px solid #E4EBE5; box-shadow: 0 2px 14px rgba(13,31,20,0.06); position: sticky; top: 220px; z-index: 50; }
+.filter-inner { max-width: 72rem; margin: 0 auto; padding: 1rem 2rem; display: flex; gap: 0.625rem; align-items: center; flex-wrap: wrap; }
+.filter-select {
+  border: 1px solid #D2DDD4; border-radius: 6px; padding: 0.6rem 2rem 0.6rem 0.875rem;
+  font-family: var(--f-body); font-size: 0.8125rem; color: var(--c-text); background: white;
+  outline: none; cursor: pointer; transition: border-color 0.2s; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%234A6050' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 0.625rem center; min-width: 120px;
+}
+.filter-select:focus { border-color: var(--c-gold); }
+.filter-date { border: 1px solid #D2DDD4; border-radius: 6px; padding: 0.6rem 0.875rem; font-family: var(--f-body); font-size: 0.8125rem; color: var(--c-text); background: white; outline: none; transition: border-color 0.2s; }
+.filter-date:focus { border-color: var(--c-gold); }
+.sort-bar { max-width: 72rem; margin: 0 auto; padding: 1.125rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+.result-count { font-size: 0.875rem; color: var(--c-text-mid); font-weight: 500; }
+.sort-control { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; color: var(--c-text-mid); }
+.listings-grid { max-width: 72rem; margin: 0 auto; padding: 0 2rem 4rem; display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+.listing-card { border: 1px solid #E2EAE4; border-radius: 10px; overflow: hidden; background: white; transition: box-shadow 0.25s, transform 0.25s; cursor: pointer; }
+.listing-card:hover { box-shadow: 0 14px 44px rgba(13,31,20,0.12), 0 2px 8px rgba(13,31,20,0.04); transform: translateY(-5px); }
+.card-img { position: relative; height: 240px; overflow: hidden; }
+.card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.listing-card:hover .card-img img { transform: scale(1.05); }
+/* CARD SLIDESHOW */
+.card-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.45s ease; }
+.card-slide.active { opacity: 1; }
+.card-slide img { width: 100%; height: 100%; object-fit: cover; display: block; transition: none; transform: none !important; }
+.card-dots { position: absolute; bottom: 0.75rem; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; z-index: 3; pointer-events: none; }
+.card-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.45); transition: background 0.25s; }
+.card-dot.active { background: white; box-shadow: 0 0 5px rgba(0,0,0,0.5); }
+/* PHOTO STRIP (detail view) */
+.photo-strip-wrap { max-width: 72rem; margin: 0 auto; padding: 0 2rem 0.5rem; }
+.photo-strip { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.75rem; scrollbar-width: thin; scrollbar-color: var(--c-gold) #eee; }
+.photo-strip::-webkit-scrollbar { height: 4px; }
+.photo-strip::-webkit-scrollbar-thumb { background: var(--c-gold); border-radius: 2px; }
+.photo-strip-item { flex-shrink: 0; width: 170px; height: 115px; border-radius: 6px; overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: border-color 0.2s; }
+.photo-strip-item:hover { border-color: var(--c-gold); }
+.photo-strip-item img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.2s; display: block; }
+.photo-strip-item:hover img { opacity: 0.88; }
+/* LIGHTBOX */
+.lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 2000; display: none; align-items: center; justify-content: center; flex-direction: column; }
+.lightbox.open { display: flex; }
+.lightbox-img { max-width: 90vw; max-height: 78vh; object-fit: contain; border-radius: 4px; display: block; }
+.lightbox-close { position: absolute; top: 1.25rem; right: 1.5rem; color: rgba(255,255,255,0.7); background: none; border: none; font-size: 2.25rem; cursor: pointer; line-height: 1; transition: color 0.2s; }
+.lightbox-close:hover { color: white; }
+.lightbox-nav { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.125rem; }
+.lightbox-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 0.5rem 1.5rem; border-radius: 4px; cursor: pointer; font-family: var(--f-body); font-size: 0.875rem; transition: background 0.2s; }
+.lightbox-btn:hover { background: rgba(255,255,255,0.22); }
+.lightbox-counter { color: rgba(255,255,255,0.5); font-size: 0.8rem; min-width: 55px; text-align: center; }
+.card-badge { position: absolute; top: 0.875rem; left: 0.875rem; padding: 0.3rem 0.75rem; border-radius: 100px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.badge-available { background: var(--c-gold); color: var(--c-deep); }
+.badge-soon { background: rgba(30,44,68,0.78); color: rgba(255,255,255,0.82); backdrop-filter: blur(4px); }
+.card-body { padding: 1.375rem; }
+.card-title { font-family: var(--f-display); font-size: 1.1rem; font-weight: 600; color: var(--c-text); margin-bottom: 0.325rem; }
+.card-location { display: flex; align-items: center; gap: 0.3rem; font-size: 0.78rem; color: var(--c-text-lt); margin-bottom: 0.875rem; }
+.card-location svg { width: 12px; height: 12px; stroke: var(--c-gold); fill: none; flex-shrink: 0; }
+.card-specs { display: flex; gap: 1rem; margin-bottom: 0.875rem; padding-bottom: 0.875rem; border-bottom: 1px solid #EEF3EF; }
+.card-spec { display: flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; color: var(--c-text-mid); font-weight: 500; }
+.card-spec svg { width: 14px; height: 14px; stroke: var(--c-gold); fill: none; }
+.card-desc { font-size: 0.845rem; line-height: 1.65; color: var(--c-text-mid); margin-bottom: 1.125rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card-footer-row { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.card-price { font-size: 0.9rem; font-weight: 700; color: var(--c-text); }
+.card-price span { font-size: 0.75rem; font-weight: 400; color: var(--c-text-lt); }
+.inquiry-band { background: var(--c-sage); padding: 4rem 2rem; text-align: center; border-top: 1px solid #E4EBE5; }
+.inquiry-band h3 { font-family: var(--f-display); font-size: 1.75rem; font-weight: 600; color: var(--c-text); margin-bottom: 0.625rem; }
+.inquiry-band p { font-size: 0.9375rem; color: var(--c-text-mid); max-width: 460px; margin: 0 auto 1.75rem; line-height: 1.7; }
+
+/* STAY DETAIL VIEW */
+.detail-back-bar { max-width: 72rem; margin: 0 auto; padding: 1.5rem 2rem 0; }
+.btn-back { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8375rem; font-weight: 600; color: var(--c-text-mid); background: none; border: none; cursor: pointer; font-family: var(--f-body); transition: color 0.2s; }
+.btn-back:hover { color: var(--c-gold); }
+.btn-back svg { width: 16px; height: 16px; stroke: currentColor; fill: none; }
+.stay-gallery { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 220px 220px; gap: 0.375rem; }
+.stay-gallery img { width: 100%; height: 100%; object-fit: cover; }
+.stay-gallery img:first-child { grid-row: 1 / 3; }
+.stay-layout { display: grid; grid-template-columns: 1fr 360px; gap: 3rem; max-width: 72rem; margin: 0 auto; padding: 3rem 2rem 5rem; align-items: start; }
+.stay-main h2 { font-family: var(--f-display); font-size: 2rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+.stay-main .location-pill { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8125rem; color: var(--c-text-mid); font-weight: 500; margin-bottom: 1.25rem; }
+.stay-main .location-pill svg { width: 14px; height: 14px; stroke: var(--c-gold); fill: none; }
+.stay-main p { font-size: 0.9375rem; line-height: 1.72; color: var(--c-text-mid); margin-bottom: 1.25rem; }
+.stay-divider { border: none; border-top: 1px solid #E4EBE5; margin: 2rem 0; }
+.amenities-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 0.875rem; margin-top: 1.25rem; }
+.am-item { display: flex; align-items: center; gap: 0.625rem; font-size: 0.875rem; color: var(--c-text-mid); }
+.am-item svg { width: 17px; height: 17px; stroke: var(--c-gold); fill: none; flex-shrink: 0; }
+.rules-list { margin-top: 1rem; list-style: none; }
+.rules-list li { display: flex; align-items: flex-start; gap: 0.625rem; font-size: 0.875rem; color: var(--c-text-mid); padding: 0.5rem 0; border-bottom: 1px solid #EEF3EF; }
+.rules-list li:last-child { border-bottom: none; }
+.rules-list svg { width: 16px; height: 16px; stroke: var(--c-gold); flex-shrink: 0; margin-top: 1px; fill: none; }
+.faq-item { border-bottom: 1px solid #E4EBE5; }
+.faq-q { display: flex; justify-content: space-between; align-items: center; padding: 1.125rem 0; cursor: pointer; font-weight: 500; font-size: 0.9375rem; color: var(--c-text); user-select: none; gap: 1rem; background: none; border: none; width: 100%; text-align: left; font-family: var(--f-body); }
+.faq-q:hover { color: var(--c-light); }
+.faq-chevron { width: 18px; height: 18px; stroke: var(--c-gold); fill: none; transition: transform 0.22s; flex-shrink: 0; }
+.faq-chevron.open { transform: rotate(180deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; font-size: 0.9rem; line-height: 1.7; color: var(--c-text-mid); }
+.faq-a.open { max-height: 160px; padding-bottom: 1.125rem; }
+.booking-panel { background: white; border: 1px solid #D8E4DB; border-radius: 10px; padding: 1.875rem; position: sticky; top: 240px; box-shadow: 0 4px 28px rgba(13,31,20,0.09), 0 1px 6px rgba(13,31,20,0.04); }
+.booking-panel h3 { font-family: var(--f-display); font-size: 1.2rem; font-weight: 600; margin-bottom: 0.2rem; }
+.booking-price { font-size: 1.6rem; font-weight: 700; color: var(--c-text); margin-bottom: 1.375rem; }
+.booking-price span { font-size: 0.85rem; font-weight: 400; color: var(--c-text-lt); }
+.form-field-group { border: 1px solid #D2DDD4; border-radius: 6px; overflow: hidden; margin-bottom: 0.75rem; }
+.form-field-row { display: grid; grid-template-columns: 1fr 1fr; }
+.form-field-row .ff { border-right: 1px solid #D2DDD4; }
+.form-field-row .ff:last-child { border-right: none; }
+.ff { padding: 0.75rem 0.875rem; }
+.ff label { display: block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-text-mid); margin-bottom: 0.275rem; }
+.ff input, .ff select { width: 100%; border: none; outline: none; font-family: var(--f-body); font-size: 0.9rem; color: var(--c-text); background: transparent; }
+.booking-note { font-size: 0.75rem; color: var(--c-text-lt); text-align: center; margin-top: 0.625rem; }
+
+/* ABOUT SECTION */
+.about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.about-text p { font-size: 0.9375rem; line-height: 1.75; color: var(--c-text-mid); margin-bottom: 1.25rem; }
+.pullquote { border-left: 3px solid var(--c-gold); padding: 1.25rem 1.75rem; margin: 2rem 0; background: var(--c-gold-pale); border-radius: 0 6px 6px 0; }
+.pullquote p { font-family: var(--f-accent); font-style: italic; font-size: 1.2rem; line-height: 1.6; color: var(--c-text); }
+.about-img-col { position: relative; }
+.about-img-col img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 8px; display: block; }
+.img-accent-box { position: absolute; bottom: -1.5rem; left: -1.5rem; width: 100px; height: 100px; background: #FFFFFF; border: 2px solid rgba(184,150,90,0.45); border-radius: 8px; z-index: -1; }
+.values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; }
+.value-item { display: flex; gap: 1rem; }
+.value-num { font-family: var(--f-display); font-size: 2.25rem; font-weight: 700; color: var(--c-gold); opacity: 0.25; line-height: 1; flex-shrink: 0; width: 44px; padding-top: 2px; }
+.value-item h4 { font-weight: 600; font-size: 0.9375rem; color: var(--c-text); margin-bottom: 0.375rem; }
+.value-item p { font-size: 0.875rem; line-height: 1.65; color: var(--c-text-mid); }
+
+/* CONTACT SECTION */
+.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4.5rem; max-width: 72rem; margin: 0 auto; padding: 4.5rem 2rem 5rem; align-items: start; }
+.contact-info h3 { font-family: var(--f-display); font-size: 1.85rem; font-weight: 600; color: var(--c-text); margin-bottom: 1rem; }
+.contact-info > p { font-size: 0.9375rem; line-height: 1.72; color: var(--c-text-mid); margin-bottom: 2.5rem; }
+.cdetail { display: flex; align-items: flex-start; gap: 0.875rem; margin-bottom: 1.25rem; }
+.cdetail-icon { width: 40px; height: 40px; background: var(--c-gold-pale); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.cdetail-icon svg { width: 18px; height: 18px; stroke: var(--c-gold); fill: none; }
+.cdetail-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-text-lt); margin-bottom: 0.2rem; }
+.cdetail-val { font-size: 0.9rem; font-weight: 600; color: var(--c-text); }
+.contact-form-card { background: white; border: 1px solid #DAE4DC; border-radius: 10px; padding: 2.5rem; box-shadow: 0 4px 24px rgba(13,31,20,0.07); }
+.form-tabs { display: flex; background: var(--c-sage); border-radius: 6px; padding: 3px; margin-bottom: 2rem; }
+.form-tab { flex: 1; padding: 0.6rem; border-radius: 4px; border: none; background: transparent; font-family: var(--f-body); font-size: 0.8rem; font-weight: 500; color: var(--c-text-mid); cursor: pointer; transition: background 0.2s, color 0.2s; }
+.form-tab.active { background: white; color: var(--c-text); box-shadow: 0 1px 4px rgba(0,0,0,0.08); font-weight: 600; }
+.form-panel { display: none; }
+.form-panel.active { display: block; }
+.cf-label { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-text-mid); margin-bottom: 0.375rem; }
+.cf-input { width: 100%; border: 1px solid #D2DDD4; border-radius: 6px; padding: 0.75rem 0.875rem; font-family: var(--f-body); font-size: 0.9rem; color: var(--c-text); outline: none; transition: border-color 0.2s; background: white; margin-bottom: 1.25rem; }
+.cf-input:focus { border-color: var(--c-gold); }
+.cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.cf-textarea { height: 110px; resize: vertical; }
+
+/* FOOTER */
+.footer { background: var(--c-deep); padding: 4.5rem 2rem 2rem; border-top: 1px solid rgba(184,150,90,0.15); }
+.footer-grid { max-width: 72rem; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.footer-brand img { height: 44px; margin-bottom: 1rem; display: block; }
+.footer-brand p { font-size: 0.8375rem; line-height: 1.65; color: rgba(255,255,255,0.42); margin-bottom: 1.25rem; }
+.footer-tagline { font-family: var(--f-accent); font-style: italic; font-size: 0.9rem; color: var(--c-gold-lt); opacity: 0.75; }
+.footer-col h4 { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--c-gold); margin-bottom: 1.125rem; }
+.footer-col a { display: block; font-size: 0.8375rem; color: rgba(255,255,255,0.46); text-decoration: none; margin-bottom: 0.6rem; transition: color 0.2s; }
+.footer-col a:hover { color: rgba(255,255,255,0.9); }
+.footer-bottom { max-width: 72rem; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding-top: 1.75rem; flex-wrap: wrap; gap: 0.5rem; }
+.footer-copy { font-size: 0.76rem; color: rgba(255,255,255,0.28); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .why-grid, .testimonials-grid { grid-template-columns: 1fr 1fr; }
+  .property-grid, .about-snip-grid, .about-layout { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .stay-layout { grid-template-columns: 1fr; }
+  .booking-panel { position: static; }
+  .stay-gallery { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .stay-gallery img { height: 200px; }
+  .stay-gallery img:first-child { grid-row: auto; }
+  .amenities-grid { grid-template-columns: 1fr; }
+  .listings-grid { grid-template-columns: repeat(2,1fr); }
+  .contact-layout { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .why-grid, .testimonials-grid, .listings-grid, .footer-grid { grid-template-columns: 1fr; }
+  .section { padding: 4rem 1.25rem; }
+  .hero h1 { font-size: 2.6rem; }
+  .cf-row { grid-template-columns: 1fr; }
+  .trust-inner { gap: 1.25rem; }
+  .about-img-accent, .img-accent-box { display: none; }
+  .filter-inner { flex-direction: column; align-items: stretch; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+:focus-visible { outline: 2px solid var(--c-gold); outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" role="navigation" aria-label="Main">
+  <a href="#home" class="nav-logo" aria-label="Ingenious Stays — go to top">
+    <img src="brand_assets/Ingenious Stays.png" alt="Ingenious Stays logo">
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="#home" data-section="home" class="nav-active">Home</a></li>
+    <li><a href="#about" data-section="about">About</a></li>
+    <li><a href="#stay" data-section="stay">Stay</a></li>
+    <li><a href="#contact" data-section="contact">Contact</a></li>
+    <li><a href="#stay" class="btn-nav">Book Your Stay</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="menu">
+  <a href="#home" onclick="closeMobileMenu()">Home</a>
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#stay" onclick="closeMobileMenu()">Stay</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  <a href="#stay" class="btn-nav" onclick="closeMobileMenu()">Book Your Stay</a>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECTION: HOME
+══════════════════════════════════════════ -->
+<section id="home">
+
+  <!-- HERO -->
+  <div class="hero" aria-label="Hero">
+    <div class="hero-pattern" aria-hidden="true"></div>
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="eyebrow eyebrow-lg">Thoughtful Stays. Made Simple.</div>
+      <h1>A Stay Worth<br><em>Coming Back To.</em></h1>
+      <p class="hero-sub">Ingenious Stays offers refined short-term rentals for professionals, families, and travelers who expect more from where they rest.</p>
+      <div class="btn-row">
+        <a href="#stay" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Book Your Stay
+        </a>
+        <a href="#about" class="btn-outline">Learn Our Story</a>
+      </div>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-line"></div>
+      <span class="scroll-text">Scroll</span>
+    </div>
+  </div>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span class="trust-label"><strong>4.9★</strong> Average Rating</span>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        <span class="trust-label"><strong>200+</strong> Guests Served</span>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span class="trust-label"><strong>&lt;2 Hr</strong> Response Time</span>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span class="trust-label"><strong>Licensed</strong> &amp; Insured</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY US -->
+  <div class="section bg-sage">
+    <div class="section-inner">
+      <div class="section-label">Why Ingenious Stays</div>
+      <h2 class="section-title">Every Detail, Considered</h2>
+      <p class="section-sub">We manage short-term rentals the way a thoughtful host would — with care, consistency, and genuine respect for every guest.</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+          <h3>Comfort First</h3>
+          <p>From premium linens to a fully-equipped kitchen, every property is curated for the guest who doesn't want to settle. Real comfort — not just a clean room.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h3>True Convenience</h3>
+          <p>Self check-in, dedicated parking, in-unit laundry, and fast WiFi — because your time matters more than logistics. Arrive and feel at home immediately.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Earned Trust</h3>
+          <p>Licensed, insured, and consistently rated by verified guests. You know exactly what you're getting before you arrive — and we stand behind every stay.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURED PROPERTY -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="property-grid">
+        <div class="prop-gallery">
+          <img src="https://placehold.co/600x500/1E3D2A/F2F6F3?text=Living+Space" alt="Living space">
+          <img src="https://placehold.co/295x240/2A5240/F2F6F3?text=Kitchen" alt="Kitchen">
+          <img src="https://placehold.co/295x155/B8965A/FFFFFF?text=Bedroom" alt="Bedroom">
+        </div>
+        <div class="prop-info">
+          <div class="section-label">Now Available</div>
+          <h3>Designed for How You Actually Live</h3>
+          <p>Our flagship property is a thoughtfully furnished space built around the real needs of travelers — remote workers, medical staff on rotation, families between moves, and anyone who needs a home that simply works.</p>
+          <div class="tag-row">
+            <span class="tag">High-Speed WiFi</span>
+            <span class="tag">Full Kitchen</span>
+            <span class="tag">Washer &amp; Dryer</span>
+            <span class="tag">Free Parking</span>
+            <span class="tag">Smart TV</span>
+            <span class="tag">Work Desk</span>
+            <span class="tag">Private Entrance</span>
+          </div>
+          <a href="#stay" class="btn-ghost">Explore the Space →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="section bg-sage">
+    <div class="section-inner">
+      <div class="section-label">Guest Reviews</div>
+      <h2 class="section-title">What Our Guests Say</h2>
+      <div class="testimonials-grid">
+        <div class="tcard">
+          <div class="tcard-quote">&ldquo;</div>
+          <div class="tcard-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p>"Working remotely for three months, I needed a space that felt like home. Ingenious Stays delivered — quiet, well-equipped, and the host was remarkably responsive."</p>
+          <div class="tcard-name">Danielle R.</div>
+          <div class="tcard-role">Healthcare Professional</div>
+        </div>
+        <div class="tcard">
+          <div class="tcard-quote">&ldquo;</div>
+          <div class="tcard-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p>"The property was spotless and had everything we needed. My family felt at home from the first night — the kitchen especially made a real difference."</p>
+          <div class="tcard-name">Marcus T.</div>
+          <div class="tcard-role">Family Traveler</div>
+        </div>
+        <div class="tcard">
+          <div class="tcard-quote">&ldquo;</div>
+          <div class="tcard-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p>"I've stayed at a lot of short-term rentals for work. This was a different caliber — tasteful, clean, and the WiFi actually performed."</p>
+          <div class="tcard-name">Kevin L.</div>
+          <div class="tcard-role">Business Consultant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section><!-- /home -->
+
+<!-- ══════════════════════════════════════════
+     SECTION: ABOUT
+══════════════════════════════════════════ -->
+<section id="about">
+
+  <div class="section-dark-hd">
+    <div class="section-dark-hd-inner">
+      <div class="eyebrow" style="margin-bottom:1.25rem;">Our Story</div>
+      <h2>We Raise the Standard<br>of <em>Every Stay.</em></h2>
+      <p>A hospitality and real estate company built around one conviction: a thoughtful, well-managed short-term rental changes the experience of being away from home.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-inner">
+      <div class="about-snip-grid">
+        <div class="about-snip-img">
+          <img src="brand_assets/Ingenious Stays.png" alt="Ingenious Stays" style="object-fit:contain;background:#FFFFFF;padding:2rem;">
+          <div class="about-img-accent" aria-hidden="true"></div>
+        </div>
+        <div>
+          <div class="section-label">Our Story</div>
+          <h2 class="section-title">Built with Purpose.<br>Managed with Care.</h2>
+          <div class="gold-bar"></div>
+          <p style="font-size:0.9375rem;line-height:1.75;color:var(--c-text-mid);margin-bottom:1.25rem;">Ingenious Stays was founded on a belief that short-term rentals can — and should — feel like a well-considered home. Every property in our portfolio is selected, furnished, and maintained to a standard that makes guests feel respected, not just accommodated.</p>
+          <p style="font-size:0.9375rem;line-height:1.75;color:var(--c-text-mid);margin-bottom:2rem;">We serve traveling professionals, medical workers, families in transition, and business travelers who need more than a place to sleep.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-inner">
+      <div class="about-layout">
+        <div class="about-text">
+          <div class="section-label">How We Started</div>
+          <h2 class="section-title">A Better Stay Was Always the Goal.</h2>
+          <div class="gold-bar"></div>
+          <p>Ingenious Stays began with a simple question: why do so many short-term rentals feel like afterthoughts? Mismatched furniture, slow WiFi, unclear check-in instructions — guests were expected to adapt to the property, not the other way around.</p>
+          <p>We decided to build the kind of stay we'd actually want. Every property in our portfolio is selected, furnished, and managed to a consistent standard — one that makes guests feel like the space was ready for them specifically.</p>
+          <div class="pullquote">
+            <p>"Our mission is to provide guests with a home-like experience they can count on — and to build a real estate business that creates lasting value for our guests and our community."</p>
+          </div>
+          <p>Today, Ingenious Stays serves traveling professionals, medical workers, families in transition, and business travelers. We're building a real estate portfolio grounded in hospitality values: attention to detail, responsive communication, and a commitment to quality that shows up in every review.</p>
+        </div>
+        <div class="about-img-col">
+          <img src="brand_assets/Ingenious Stays.png" alt="Ingenious Stays" style="object-fit:contain;background:#FFFFFF;padding:2.5rem;">
+          <div class="img-accent-box" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section bg-sage">
+    <div class="section-inner">
+      <div class="section-label">What We Stand For</div>
+      <h2 class="section-title">Our Values</h2>
+      <p class="section-sub">Every decision at Ingenious Stays flows from commitments we take seriously — to our guests, our community, and our future.</p>
+      <div class="values-grid">
+        <div class="value-item"><div class="value-num">01</div><div><h4>Guest First</h4><p>Every decision starts with the guest experience. If it doesn't serve them, it doesn't belong in one of our properties.</p></div></div>
+        <div class="value-item"><div class="value-num">02</div><div><h4>Deliberate Quality</h4><p>We don't furnish fast. Every property reflects careful selection — chosen to last, not just to photograph.</p></div></div>
+        <div class="value-item"><div class="value-num">03</div><div><h4>Transparent Trust</h4><p>Clear pricing, honest communication, and verified reviews. Nothing is hidden. What you see is what you get.</p></div></div>
+        <div class="value-item"><div class="value-num">04</div><div><h4>Long-Term Vision</h4><p>We're building a portfolio, not flipping properties. Every investment is designed to compound in value.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-inner" style="max-width:680px;">
+      <div class="section-label">Where We're Headed</div>
+      <h2 class="section-title">Growth with Purpose.</h2>
+      <div class="gold-bar"></div>
+      <p style="font-size:0.9375rem;line-height:1.75;color:var(--c-text-mid);margin-bottom:1.25rem;">Our growth plan targets a portfolio of quality short-term rental properties — each operating at high occupancy, earning consistent reviews, and serving a specific guest profile. We're not racing to scale; we're building to last.</p>
+      <p style="font-size:0.9375rem;line-height:1.75;color:var(--c-text-mid);margin-bottom:2rem;">As we grow, we remain committed to the standards that define Ingenious Stays: responsive management, quality furnishings, and a guest experience that earns real loyalty.</p>
+      <div class="btn-row">
+        <a href="#stay" class="btn-primary">Book a Stay</a>
+        <a href="#contact" class="btn-dark">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+
+</section><!-- /about -->
+
+<!-- ══════════════════════════════════════════
+     SECTION: STAY
+══════════════════════════════════════════ -->
+<section id="stay">
+
+  <!-- LISTINGS VIEW -->
+  <div id="stay-listings">
+
+    <div class="stay-listing-hero">
+      <img src="https://placehold.co/1440x600/1E3D2A/D4B483?text=Furnished+Rentals" alt="Furnished rentals">
+      <div class="stay-listing-overlay">
+        <div>
+          <div class="eyebrow" style="margin-bottom:0.75rem;">Thoughtful Stays. Made Simple.</div>
+          <h2>Furnished Rentals</h2>
+          <p>Fully furnished short-term rentals for professionals, families, and extended-stay guests.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-bar" role="search">
+      <div class="filter-inner">
+        <select class="filter-select"><option value="">Property Type</option><option>House</option><option>Apartment</option><option>Condo</option><option>Townhome</option></select>
+        <select class="filter-select"><option value="">Bedrooms</option><option>1+</option><option>2+</option><option>3+</option><option>4+</option></select>
+        <select class="filter-select"><option value="">Bathrooms</option><option>1+</option><option>2+</option><option>3+</option></select>
+        <select class="filter-select"><option value="">Price Range</option><option>Under $100/night</option><option>$100–$150/night</option><option>$150–$200/night</option><option>$200+/night</option></select>
+        <input type="date" class="filter-date" aria-label="Check-in">
+        <input type="date" class="filter-date" aria-label="Check-out">
+        <button class="btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          Search
+        </button>
+      </div>
+    </div>
+
+    <div class="sort-bar">
+      <span class="result-count">3 properties found</span>
+      <div class="sort-control">
+        Sort by:
+        <select class="filter-select" style="min-width:0;margin-left:0.375rem;"><option>Featured</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Newest</option></select>
+      </div>
+    </div>
+
+    <div class="listings-grid">
+
+      <div class="listing-card" onmouseenter="startSlideshow(this)" onmouseleave="stopSlideshow(this)" onclick="showPropertyDetail()" tabindex="0" role="button" aria-label="View Cozy Clayton Get Away details">
+        <div class="card-img">
+          <div class="card-slide active"><img src="157 Pictures/jpg/IMG_9749 - Copy.jpg" alt="Cozy Clayton Get Away"></div>
+          <div class="card-slide"><img src="157 Pictures/jpg/IMG_9717 - Copy.jpg" alt="Cozy Clayton Get Away"></div>
+          <div class="card-slide"><img src="157 Pictures/jpg/IMG_9725 - Copy.jpg" alt="Cozy Clayton Get Away"></div>
+          <div class="card-slide"><img src="157 Pictures/jpg/IMG_9734 - Copy.jpg" alt="Cozy Clayton Get Away"></div>
+          <div class="card-slide"><img src="157 Pictures/jpg/IMG_9738 - Copy.jpg" alt="Cozy Clayton Get Away"></div>
+          <div class="card-slide"><img src="157 Pictures/jpg/IMG_9744 - Copy.jpg" alt="Cozy Clayton Get Away"></div>
+          <div class="card-slide"><img src="157 Pictures/jpg/IMG_9793 - Copy.jpg" alt="Cozy Clayton Get Away"></div>
+          <div class="card-slide"><img src="157 Pictures/jpg/IMG_9794 - Copy.jpg" alt="Cozy Clayton Get Away"></div>
+          <div class="card-slide"><img src="157 Pictures/jpg/IMG_9807.jpg" alt="Cozy Clayton Get Away"></div>
+          <span class="card-badge badge-available">Available Now</span>
+          <div class="card-dots">
+            <div class="card-dot active"></div><div class="card-dot"></div><div class="card-dot"></div>
+            <div class="card-dot"></div><div class="card-dot"></div><div class="card-dot"></div>
+            <div class="card-dot"></div><div class="card-dot"></div><div class="card-dot"></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Cozy Clayton Get Away</div>
+          <div class="card-location"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Clayton, NC 27520</div>
+          <div class="card-specs">
+            <div class="card-spec"><svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>3 Bed</div>
+            <div class="card-spec"><svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M4 12h16a1 1 0 011 1v3a4 4 0 01-4 4H7a4 4 0 01-4-4v-3a1 1 0 011-1z"/><path d="M6 12V5a2 2 0 012-2h3v2.25"/><line x1="4" y1="16" x2="20" y2="16"/></svg>2 Bath</div>
+            <div class="card-spec"><svg viewBox="0 0 24 24" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>1,200 sqft</div>
+          </div>
+          <p class="card-desc">A warm, fully-furnished home with full kitchen, dedicated workspace, private parking, and fast WiFi — perfect for extended stays and getaways.</p>
+          <div class="card-footer-row">
+            <div class="card-price">$125 <span>/ night</span></div>
+            <button class="btn-primary btn-sm" onclick="event.stopPropagation();showPropertyDetail()">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="listing-card" style="pointer-events:none;opacity:0.75;">
+        <div class="card-img">
+          <img src="https://placehold.co/600x480/183324/D4B483?text=Raleigh+Midtown" alt="Raleigh Midtown Retreat">
+          <span class="card-badge badge-soon">Coming Soon</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Raleigh Midtown Retreat</div>
+          <div class="card-location"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Raleigh, NC</div>
+          <div class="card-specs">
+            <div class="card-spec"><svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>2 Bed</div>
+            <div class="card-spec"><svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M4 12h16a1 1 0 011 1v3a4 4 0 01-4 4H7a4 4 0 01-4-4v-3a1 1 0 011-1z"/><path d="M6 12V5a2 2 0 012-2h3v2.25"/><line x1="4" y1="16" x2="20" y2="16"/></svg>1 Bath</div>
+            <div class="card-spec"><svg viewBox="0 0 24 24" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>950 sqft</div>
+          </div>
+          <p class="card-desc">Modern urban retreat minutes from downtown Raleigh. Perfect for professionals who want to be close to the city with a quiet space to return to.</p>
+          <div class="card-footer-row">
+            <div class="card-price" style="color:var(--c-text-lt);font-weight:500;">Inquire for Rate</div>
+            <a href="#contact" class="btn-dark btn-sm" style="pointer-events:all;">Notify Me</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="listing-card" style="pointer-events:none;opacity:0.75;">
+        <div class="card-img">
+          <img src="https://placehold.co/600x480/0D1F14/B8965A?text=Research+Triangle" alt="Research Triangle Suite">
+          <span class="card-badge badge-soon">Coming Soon</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Research Triangle Corporate Suite</div>
+          <div class="card-location"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Durham, NC</div>
+          <div class="card-specs">
+            <div class="card-spec"><svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>4 Bed</div>
+            <div class="card-spec"><svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M4 12h16a1 1 0 011 1v3a4 4 0 01-4 4H7a4 4 0 01-4-4v-3a1 1 0 011-1z"/><path d="M6 12V5a2 2 0 012-2h3v2.25"/><line x1="4" y1="16" x2="20" y2="16"/></svg>3 Bath</div>
+            <div class="card-spec"><svg viewBox="0 0 24 24" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>1,850 sqft</div>
+          </div>
+          <p class="card-desc">Spacious corporate-grade home near RTP. Designed for teams, executives, and families relocating to the Research Triangle area.</p>
+          <div class="card-footer-row">
+            <div class="card-price" style="color:var(--c-text-lt);font-weight:500;">Inquire for Rate</div>
+            <a href="#contact" class="btn-dark btn-sm" style="pointer-events:all;">Notify Me</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="inquiry-band">
+      <h3>Not Finding What You're Looking For?</h3>
+      <p>Tell us your dates, guest count, and location preference — we'll match you with the right space or alert you when one opens up.</p>
+      <a href="#contact" class="btn-primary">Submit a Rental Inquiry</a>
+    </div>
+
+  </div><!-- /stay-listings -->
+
+  <!-- DETAIL VIEW -->
+  <div id="stay-detail" style="display:none;">
+    <div class="detail-back-bar">
+      <button class="btn-back" onclick="backToListings()">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7" stroke="currentColor" stroke-width="2"/></svg>
+        Back to All Rentals
+      </button>
+    </div>
+    <div class="stay-gallery" aria-label="Property photos">
+      <img src="157 Pictures/jpg/IMG_9749 - Copy.jpg" alt="Cozy Clayton Get Away" onclick="openLightbox(0)" style="cursor:pointer;">
+      <img src="157 Pictures/jpg/IMG_9717 - Copy.jpg" alt="Interior view" onclick="openLightbox(1)" style="cursor:pointer;">
+      <img src="157 Pictures/jpg/IMG_9725 - Copy.jpg" alt="Interior view" onclick="openLightbox(2)" style="cursor:pointer;">
+      <img src="157 Pictures/jpg/IMG_9734 - Copy.jpg" alt="Interior view" onclick="openLightbox(3)" style="cursor:pointer;">
+      <img src="157 Pictures/jpg/IMG_9738 - Copy.jpg" alt="Interior view" onclick="openLightbox(4)" style="cursor:pointer;">
+    </div>
+    <div class="photo-strip-wrap">
+      <p style="font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-text-lt);margin-bottom:0.625rem;">All Photos &nbsp;· &nbsp;9 images — click to enlarge</p>
+      <div class="photo-strip">
+        <div class="photo-strip-item" onclick="openLightbox(0)"><img src="157 Pictures/jpg/IMG_9749 - Copy.jpg" alt="Photo 1"></div>
+        <div class="photo-strip-item" onclick="openLightbox(1)"><img src="157 Pictures/jpg/IMG_9717 - Copy.jpg" alt="Photo 2"></div>
+        <div class="photo-strip-item" onclick="openLightbox(2)"><img src="157 Pictures/jpg/IMG_9725 - Copy.jpg" alt="Photo 3"></div>
+        <div class="photo-strip-item" onclick="openLightbox(3)"><img src="157 Pictures/jpg/IMG_9734 - Copy.jpg" alt="Photo 4"></div>
+        <div class="photo-strip-item" onclick="openLightbox(4)"><img src="157 Pictures/jpg/IMG_9738 - Copy.jpg" alt="Photo 5"></div>
+        <div class="photo-strip-item" onclick="openLightbox(5)"><img src="157 Pictures/jpg/IMG_9744 - Copy.jpg" alt="Photo 6"></div>
+        <div class="photo-strip-item" onclick="openLightbox(6)"><img src="157 Pictures/jpg/IMG_9793 - Copy.jpg" alt="Photo 7"></div>
+        <div class="photo-strip-item" onclick="openLightbox(7)"><img src="157 Pictures/jpg/IMG_9794 - Copy.jpg" alt="Photo 8"></div>
+        <div class="photo-strip-item" onclick="openLightbox(8)"><img src="157 Pictures/jpg/IMG_9807.jpg" alt="Photo 9"></div>
+      </div>
+    </div>
+    <div class="stay-layout">
+      <div class="stay-main">
+        <h2>Cozy Clayton Get Away</h2>
+        <div class="location-pill">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Clayton, NC · Quiet neighborhood · Minutes from hospitals, business districts &amp; highways
+        </div>
+        <p>Step into a space designed for the way you actually travel. Whether you're here for a week or a month, you'll find everything ready — a real kitchen, fast internet, a comfortable bed, and a neighborhood that makes life easy.</p>
+        <p>Ideal for healthcare workers, remote professionals, families in transition, and business travelers who need a space that functions as well as it looks.</p>
+        <hr class="stay-divider">
+        <div class="section-label" style="margin-bottom:1rem;">Amenities</div>
+        <div class="amenities-grid">
+          <div class="am-item"><svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20" stroke-width="3"/></svg>High-Speed WiFi</div>
+          <div class="am-item"><svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M3 2h18v8H3zM3 14h18v8H3z"/><line x1="12" y1="10" x2="12" y2="14"/></svg>Full Kitchen</div>
+          <div class="am-item"><svg viewBox="0 0 24 24" stroke-width="1.75"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Smart TV / Streaming</div>
+          <div class="am-item"><svg viewBox="0 0 24 24" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>Washer &amp; Dryer</div>
+          <div class="am-item"><svg viewBox="0 0 24 24" stroke-width="1.75"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Free Parking</div>
+          <div class="am-item"><svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Private Entrance</div>
+          <div class="am-item"><svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>Coffee Station</div>
+          <div class="am-item"><svg viewBox="0 0 24 24" stroke-width="1.75"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Dedicated Work Desk</div>
+        </div>
+        <hr class="stay-divider">
+        <div class="section-label" style="margin-bottom:1rem;">House Rules</div>
+        <ul class="rules-list">
+          <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Check-in: 3:00 PM &nbsp;·&nbsp; Check-out: 11:00 AM</li>
+          <li><svg viewBox="0 0 24 24"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.2v-2a4 4 0 014-4h12.8"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.8v2a4 4 0 01-4 4H4.2"/></svg>No smoking on premises</li>
+          <li><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>Quiet hours: 10 PM – 8 AM</li>
+          <li><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Registered guests only</li>
+          <li><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Pets considered on request</li>
+        </ul>
+        <hr class="stay-divider">
+        <div class="section-label" style="margin-bottom:0.5rem;">Frequently Asked Questions</div>
+        <div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)" aria-expanded="false">How do I book directly?<svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2"/></svg></button><div class="faq-a">Direct booking via this site saves both parties on platform fees. Use the form on the right or reach us through the Contact section — we respond within 2 hours and can confirm availability the same day.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)" aria-expanded="false">What does check-in look like?<svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2"/></svg></button><div class="faq-a">Fully self-guided with a smart lock — no key handoffs or waiting. Detailed access instructions arrive 24 hours before your stay, so everything is ready when you are.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)" aria-expanded="false">Is parking included?<svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2"/></svg></button><div class="faq-a">Yes. Complimentary off-street, dedicated parking is included with every stay. No permit required.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)" aria-expanded="false">Do you accommodate pets?<svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2"/></svg></button><div class="faq-a">We review pet requests individually. Contact us before booking to discuss your pet — we'll do our best to accommodate responsible guests with well-behaved companions.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)" aria-expanded="false">Can I stay for a month or longer?<svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2"/></svg></button><div class="faq-a">Absolutely — we love long-term guests and offer discounted monthly rates for 28+ night stays. Contact us to discuss your timeline and we'll build a rate that works.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)" aria-expanded="false">What is your cancellation policy?<svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2"/></svg></button><div class="faq-a">Full refund for cancellations made at least 5 days before check-in. We'll always work with you when circumstances change.</div></div>
+        </div>
+      </div>
+      <div class="booking-panel" role="complementary" aria-label="Booking">
+        <h3>Reserve Your Stay</h3>
+        <div class="booking-price">From $125 <span>/ night</span></div>
+        <div class="form-field-group">
+          <div class="form-field-row">
+            <div class="ff"><label for="checkin">Check-In</label><input type="date" id="checkin"></div>
+            <div class="ff"><label for="checkout">Check-Out</label><input type="date" id="checkout"></div>
+          </div>
+        </div>
+        <div class="form-field-group"><div class="ff"><label for="guests">Guests</label><select id="guests"><option>1 guest</option><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5+ guests</option></select></div></div>
+        <a href="#contact" class="btn-primary" style="width:100%;justify-content:center;margin-top:0.5rem;display:flex;">Request to Book</a>
+        <p class="booking-note">No charge yet · We'll confirm within 2 hours</p>
+        <hr style="border:none;border-top:1px solid #E4EBE5;margin:1.25rem 0;">
+        <div style="font-size:0.8rem;color:var(--c-text-mid);line-height:1.6;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem;"><span>Nightly rate</span><span style="color:var(--c-text);font-weight:500;">$125</span></div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem;"><span>Monthly discount</span><span style="color:var(--c-light);font-weight:500;">Available</span></div>
+          <div style="display:flex;justify-content:space-between;padding-top:0.625rem;border-top:1px solid #E4EBE5;"><span style="font-weight:600;color:var(--c-text);">Direct booking savings</span><span style="color:var(--c-gold);font-weight:600;">Included</span></div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /stay-detail -->
+
+</section><!-- /stay -->
+
+<!-- ══════════════════════════════════════════
+     SECTION: CONTACT
+══════════════════════════════════════════ -->
+<section id="contact">
+
+  <div class="section-dark-hd" style="padding-bottom:3rem;">
+    <div class="section-dark-hd-inner">
+      <div class="eyebrow" style="margin-bottom:1rem;">Get in Touch</div>
+      <h2>Let's Talk.</h2>
+      <p>Whether you're booking a stay, asking a question, or exploring a collaboration — we're here. Expect a response within two business hours.</p>
+    </div>
+  </div>
+
+  <div class="contact-layout">
+    <div class="contact-info">
+      <h3>We'd Love to Hear From You.</h3>
+      <p>Guests, business travelers, families, and potential community partners are all welcome to reach out. Use the form to tell us what you're looking for and we'll get back to you promptly.</p>
+      <div class="cdetail">
+        <div class="cdetail-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><div class="cdetail-label">Email</div><div class="cdetail-val">hello@ingeniousstays.com</div></div>
+      </div>
+      <div class="cdetail">
+        <div class="cdetail-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.46-.46a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div><div class="cdetail-label">Phone</div><div class="cdetail-val">(XXX) XXX-XXXX</div></div>
+      </div>
+      <div class="cdetail">
+        <div class="cdetail-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div><div class="cdetail-label">Response Time</div><div class="cdetail-val">Within 2 business hours</div></div>
+      </div>
+      <div class="cdetail">
+        <div class="cdetail-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <div><div class="cdetail-label">Hours</div><div class="cdetail-val">Mon – Sat, 8 AM – 9 PM</div></div>
+      </div>
+      <div style="margin-top:2rem;padding:1.5rem;background:var(--c-gold-pale);border-radius:8px;border-left:3px solid var(--c-gold);">
+        <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--c-gold);margin-bottom:0.5rem;">Direct Booking Benefit</div>
+        <p style="font-size:0.875rem;line-height:1.65;color:var(--c-text-mid);">Booking directly means no platform fees, better communication, and a more personal experience. We're always willing to discuss extended stay discounts for direct guests.</p>
+      </div>
+    </div>
+    <div class="contact-form-card">
+      <div class="form-tabs" role="tablist">
+        <button class="form-tab active" onclick="switchTab('guest')" role="tab" aria-selected="true" id="tab-guest" aria-controls="panel-guest">Guest Inquiry</button>
+        <button class="form-tab" onclick="switchTab('partner')" role="tab" aria-selected="false" id="tab-partner" aria-controls="panel-partner">Partnership / Funding</button>
+      </div>
+      <div class="form-panel active" id="panel-guest" role="tabpanel" aria-labelledby="tab-guest">
+        <div class="cf-row">
+          <div><label class="cf-label" for="g-first">First Name</label><input class="cf-input" type="text" id="g-first" placeholder="Jane"></div>
+          <div><label class="cf-label" for="g-last">Last Name</label><input class="cf-input" type="text" id="g-last" placeholder="Smith"></div>
+        </div>
+        <label class="cf-label" for="g-email">Email Address</label><input class="cf-input" type="email" id="g-email" placeholder="jane@email.com">
+        <label class="cf-label" for="g-phone">Phone (optional)</label><input class="cf-input" type="tel" id="g-phone" placeholder="(555) 000-0000">
+        <div class="cf-row">
+          <div><label class="cf-label" for="g-checkin">Check-In</label><input class="cf-input" type="date" id="g-checkin"></div>
+          <div><label class="cf-label" for="g-checkout">Check-Out</label><input class="cf-input" type="date" id="g-checkout"></div>
+        </div>
+        <label class="cf-label" for="g-guests">Number of Guests</label>
+        <select class="cf-input" id="g-guests"><option value="">Select…</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option></select>
+        <label class="cf-label" for="g-msg">Message</label>
+        <textarea class="cf-input cf-textarea" id="g-msg" placeholder="Tell us about your stay — length, any special needs, questions about the property…"></textarea>
+        <button class="btn-primary" style="width:100%;justify-content:center;" onclick="handleFormSubmit(event)">Send Inquiry</button>
+        <p style="font-size:0.75rem;color:var(--c-text-lt);text-align:center;margin-top:0.625rem;">We'll confirm availability and respond within 2 hours.</p>
+      </div>
+      <div class="form-panel" id="panel-partner" role="tabpanel" aria-labelledby="tab-partner">
+        <label class="cf-label" for="p-name">Your Name</label><input class="cf-input" type="text" id="p-name" placeholder="Full name">
+        <label class="cf-label" for="p-org">Organization / Company</label><input class="cf-input" type="text" id="p-org" placeholder="Organization name (if applicable)">
+        <label class="cf-label" for="p-email">Email Address</label><input class="cf-input" type="email" id="p-email" placeholder="you@organization.com">
+        <label class="cf-label" for="p-type">Partnership Type</label>
+        <select class="cf-input" id="p-type"><option value="">Select…</option><option>Private Investment</option><option>Grant / Foundation Funding</option><option>Corporate Housing Account</option><option>Community Partnership</option><option>Other</option></select>
+        <label class="cf-label" for="p-msg">Tell Us About Your Interest</label>
+        <textarea class="cf-input cf-textarea" id="p-msg" placeholder="Share your goals or any questions about working with Ingenious Stays…"></textarea>
+        <button class="btn-primary" style="width:100%;justify-content:center;" onclick="handleFormSubmit(event)">Send Inquiry</button>
+        <p style="font-size:0.75rem;color:var(--c-text-lt);text-align:center;margin-top:0.625rem;">All inquiries are reviewed personally and responded to within one business day.</p>
+      </div>
+    </div>
+  </div>
+
+</section><!-- /contact -->
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="brand_assets/Ingenious Stays.png" alt="Ingenious Stays">
+      <p>Refined short-term rentals for professionals, families, and travelers who expect more from where they stay.</p>
+      <div class="footer-tagline">Thoughtful Stays. Made Simple.</div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#stay">Stay</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>For Guests</h4>
+      <a href="#stay">Book a Stay</a>
+      <a href="#stay" onclick="showPropertyDetail()">Amenities</a>
+      <a href="#stay" onclick="showPropertyDetail()">House Rules</a>
+      <a href="#stay" onclick="showPropertyDetail()">FAQ</a>
+      <a href="#contact">Contact Host</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Ingenious Stays. All rights reserved.</span>
+    <span class="footer-copy">hello@ingeniousstays.com</span>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+  <img class="lightbox-img" id="lb-img" src="" alt="Property photo">
+  <div class="lightbox-nav">
+    <button class="lightbox-btn" onclick="lightboxPrev()">&#8592; Prev</button>
+    <span class="lightbox-counter" id="lb-counter">1 / 9</span>
+    <button class="lightbox-btn" onclick="lightboxNext()">Next &#8594;</button>
+  </div>
+</div>
+
+<script>
+  /* ── CARD SLIDESHOW ── */
+  const _ssIntervals = {};
+  function startSlideshow(card) {
+    const slides = card.querySelectorAll('.card-slide');
+    const dots   = card.querySelectorAll('.card-dot');
+    if (slides.length <= 1) return;
+    const id = card.dataset.ssId || (card.dataset.ssId = 'ss' + Date.now());
+    let idx = 0;
+    _ssIntervals[id] = setInterval(() => {
+      slides[idx].classList.remove('active');
+      if (dots[idx]) dots[idx].classList.remove('active');
+      idx = (idx + 1) % slides.length;
+      slides[idx].classList.add('active');
+      if (dots[idx]) dots[idx].classList.add('active');
+    }, 900);
+  }
+  function stopSlideshow(card) {
+    const id = card.dataset.ssId;
+    if (id) { clearInterval(_ssIntervals[id]); delete _ssIntervals[id]; }
+    card.querySelectorAll('.card-slide').forEach((s, i) => s.classList.toggle('active', i === 0));
+    card.querySelectorAll('.card-dot').forEach((d, i) => d.classList.toggle('active', i === 0));
+  }
+
+  /* ── LIGHTBOX ── */
+  const PHOTOS = [
+    '157 Pictures/jpg/IMG_9749 - Copy.jpg',
+    '157 Pictures/jpg/IMG_9717 - Copy.jpg',
+    '157 Pictures/jpg/IMG_9725 - Copy.jpg',
+    '157 Pictures/jpg/IMG_9734 - Copy.jpg',
+    '157 Pictures/jpg/IMG_9738 - Copy.jpg',
+    '157 Pictures/jpg/IMG_9744 - Copy.jpg',
+    '157 Pictures/jpg/IMG_9793 - Copy.jpg',
+    '157 Pictures/jpg/IMG_9794 - Copy.jpg',
+    '157 Pictures/jpg/IMG_9807.jpg',
+  ];
+  let lbIdx = 0;
+  function openLightbox(i) {
+    lbIdx = i;
+    document.getElementById('lightbox').classList.add('open');
+    _updateLb();
+  }
+  function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+  function lightboxNext() { lbIdx = (lbIdx + 1) % PHOTOS.length; _updateLb(); }
+  function lightboxPrev() { lbIdx = (lbIdx - 1 + PHOTOS.length) % PHOTOS.length; _updateLb(); }
+  function _updateLb() {
+    document.getElementById('lb-img').src = PHOTOS[lbIdx];
+    document.getElementById('lb-counter').textContent = (lbIdx + 1) + ' / ' + PHOTOS.length;
+  }
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'ArrowRight') lightboxNext();
+    if (e.key === 'ArrowLeft')  lightboxPrev();
+    if (e.key === 'Escape')     closeLightbox();
+  });
+
+  /* ── PROPERTY DETAIL TOGGLE ── */
+  function showPropertyDetail() {
+    document.getElementById('stay-listings').style.display = 'none';
+    document.getElementById('stay-detail').style.display = 'block';
+    document.getElementById('stay').scrollIntoView({ behavior: 'smooth' });
+  }
+  function backToListings() {
+    document.getElementById('stay-detail').style.display = 'none';
+    document.getElementById('stay-listings').style.display = 'block';
+    document.getElementById('stay').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  /* ── MOBILE MENU ── */
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.querySelector('.hamburger');
+    const isOpen = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen);
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.querySelector('.hamburger').setAttribute('aria-expanded', 'false');
+  }
+  document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', closeMobileMenu));
+
+  /* ── FAQ ACCORDION ── */
+  function toggleFAQ(btn) {
+    const answer = btn.nextElementSibling;
+    const chevron = btn.querySelector('.faq-chevron');
+    const isOpen = answer.classList.contains('open');
+    document.querySelectorAll('.faq-a.open').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-chevron.open').forEach(c => c.classList.remove('open'));
+    document.querySelectorAll('.faq-q').forEach(q => q.setAttribute('aria-expanded', 'false'));
+    if (!isOpen) { answer.classList.add('open'); chevron.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+  }
+
+  /* ── CONTACT FORM TABS ── */
+  function switchTab(id) {
+    document.querySelectorAll('.form-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+    document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    document.getElementById('tab-' + id).setAttribute('aria-selected', 'true');
+    document.getElementById('panel-' + id).classList.add('active');
+  }
+
+  /* ── FORM SUBMIT ── */
+  function handleFormSubmit(e) {
+    const btn = e.target;
+    const orig = btn.textContent;
+    btn.textContent = "Sent! We'll be in touch shortly.";
+    btn.style.background = 'var(--c-light)';
+    btn.disabled = true;
+    setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.disabled = false; }, 4000);
+  }
+
+  /* ── ACTIVE NAV ON SCROLL ── */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a[data-section]');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('nav-active'));
+        const active = document.querySelector(`.nav-links a[data-section="${entry.target.id}"]`);
+        if (active) active.classList.add('nav-active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -75% 0px' });
+  sections.forEach(s => observer.observe(s));
+
+  /* ── KEYBOARD: card click via Enter ── */
+  document.querySelectorAll('.listing-card[tabindex]').forEach(card => {
+    card.addEventListener('keydown', e => { if (e.key === 'Enter') card.click(); });
+  });
+</script>
+</body>
+</html>

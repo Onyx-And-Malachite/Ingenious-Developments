@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ingenious Developments — Welcoming Those Who Serve. Protecting Those Who Built.</title>
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="Ingenious Developments is a North Carolina real estate company with a dual mission: furnished housing for traveling professionals, and home rehabilitation for longtime community residents.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  padding-top: var(--nav-h);
+  display: flex; flex-direction: column;
+}
+.hero-mission-band {
+  background: #C8A87A;
+  padding: 5rem 2rem 4.5rem;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; flex: 1;
+  position: relative;
+}
+.hero-mission-band::after {
+  content: '';
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 32px; background: var(--gold); opacity: 0.4;
+}
+.hero-mission-inner { max-width: 660px; }
+.hero-logo {
+  display: block; margin: 0 auto 2rem;
+  width: clamp(488px, 84.8%, 912px); /* 424/400 of the old size: the logo's frame was widened for its tagline */
+  max-width: 100%; /* never wider than the screen on phones */
+}
+.hero-h1 {
+  font-family: var(--f-display);
+  font-size: clamp(2.25rem, 4.5vw, 3.875rem);
+  font-weight: 700; color: var(--ink);
+  line-height: 1.14; letter-spacing: -0.022em;
+}
+.hero-h1 em { font-style: italic; color: #7A4A1A; }
+
+/* Signature two-door split */
+.two-doors { display: grid; grid-template-columns: 1fr 1fr; flex-shrink: 0; }
+.door {
+  text-decoration: none;
+  padding: 3.5rem 4rem 4.5rem;
+  display: flex; flex-direction: column; gap: 0.875rem;
+  position: relative; overflow: hidden;
+  transition: filter 0.3s;
+}
+.door::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(0,0,0,0); transition: background 0.3s;
+}
+.door:hover::after { background: rgba(0,0,0,0.06); }
+.door-stays {
+  background: var(--gs-dk);
+  border-right: 1px solid var(--gold);
+}
+.door-homes { background: var(--gh-dk); }
+.door-tag {
+  font-size: 1.8rem; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: rgba(255,255,255,0.38);
+}
+.door h2 {
+  font-family: var(--f-display);
+  font-size: clamp(1.5rem, 2.2vw, 2.125rem);
+  font-weight: 700; color: white; line-height: 1.18;
+}
+.door-body {
+  font-size: 1.3125rem; font-weight: 300;
+  color: rgba(255,255,255,0.6); line-height: 1.65; max-width: 340px;
+}
+.door-cta {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font-size: 1.19rem; font-weight: 600; color: white;
+  margin-top: 0.75rem; padding-bottom: 2px;
+  border-bottom: 1px solid rgba(255,255,255,0.28);
+  width: fit-content; transition: gap 0.2s, border-color 0.2s;
+}
+.door:hover .door-cta { gap: 0.7rem; border-color: rgba(255,255,255,0.7); }
+
+/* ── FOUNDER ── */
+.founder { padding: 6rem 2rem; }
+.founder-inner { max-width: 780px; margin: 0 auto; }
+.founder-pullquote {
+  font-family: var(--f-display);
+  font-size: clamp(1.3125rem, 2.2vw, 1.75rem);
+  font-style: italic; font-weight: 400; color: var(--ink);
+  line-height: 1.55; border-left: 3px solid var(--gold);
+  padding-left: 1.75rem; margin-bottom: 2.25rem;
+}
+.founder-text { font-size: 1.3125rem; line-height: 1.8; color: var(--ink-mid); margin-bottom: 1.25rem; }
+
+/* ── TOWNS ── */
+.towns { background: var(--paper); padding: 5rem 2rem; }
+.towns-header { max-width: var(--max-w); margin: 0 auto 2.5rem; }
+.towns-grid {
+  max-width: var(--max-w); margin: 0 auto;
+  display: grid; grid-template-columns: repeat(6,1fr); gap: 1rem;
+}
+.town-card {
+  background: white; border: 1px solid var(--border); border-radius: 6px;
+  padding: 1.375rem 1rem; text-align: center;
+  transition: border-color 0.2s;
+}
+.town-card:hover { border-color: var(--gold); }
+.town-name {
+  font-family: var(--f-display); font-size: 1.3125rem; font-weight: 700;
+  color: var(--ink); margin-bottom: 0.3rem;
+}
+.town-county { font-size: 1.3125rem; color: var(--ink-lt); font-weight: 500; }
+
+/* ── NUMBERS ── */
+.numbers { background: var(--ink); padding: 5rem 2rem; }
+.numbers-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 3rem;
+}
+.number-divider {
+  border: none; border-left: 1px solid rgba(255,255,255,0.07);
+}
+
+/* ── ABOUT ── */
+.about { padding: 6rem 2rem; background: var(--gold-pale); }
+.about-inner { max-width: 760px; margin: 0 auto; }
+.about-text { font-size: 1.3125rem; line-height: 1.8; color: var(--ink-mid); margin-bottom: 1.25rem; }
+.about-text strong { color: var(--ink); font-weight: 600; }
+.about-text em { font-style: italic; }
+.about-divider { border: none; border-top: 1px solid rgba(196,146,74,0.25); margin: 2.5rem 0; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .towns-grid { grid-template-columns: repeat(3,1fr); }
+  .numbers-inner { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .door { padding: 2.5rem 2rem 3rem; }
+}
+@media (max-width: 640px) {
+  .two-doors { grid-template-columns: 1fr; }
+  .door-stays { border-right: none; border-bottom: 1px solid var(--gold); }
+  .towns-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .town-card { padding-left: 0.5rem; padding-right: 0.5rem; }
+  .numbers-inner { grid-template-columns: 1fr; gap: 2rem; }
+}
+@media (max-width: 359px) {
+  .towns-grid { grid-template-columns: 1fr; } /* town names don't fit two-up on the narrowest phones */
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <span class="nav-brand-main">Ingenious Developments</span>
+      <span class="nav-brand-sub">Clayton, North Carolina</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="stays/index.html">Stays</a></li>
+      <li><a href="homes/index.html">Homes</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="stays/book.html" class="nav-cta">Find a Stay</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <a href="stays/index.html">Stays</a>
+  <a href="homes/index.html">Homes</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <a href="stays/book.html" style="color:var(--gold);font-weight:700;margin-top:0.5rem;">Find a Stay →</a>
+</div>
+
+<!-- HERO: mission statement + two doors -->
+<div class="hero">
+  <div class="hero-mission-band">
+    <div class="hero-mission-inner">
+      <img src="../brand_assets/ingenious-developments-stacked-tagline.svg" alt="Ingenious Developments" class="hero-logo">
+      <h1 class="hero-h1">
+        Welcoming those who serve.<br>
+        <em>Protecting those who built.</em>
+      </h1>
+    </div>
+  </div>
+
+  <div class="two-doors">
+    <a href="stays/index.html" class="door door-stays">
+      <div class="door-tag">Ingenious Stays</div>
+      <h2>Need a place to stay?</h2>
+      <p class="door-body">Furnished homes for traveling professionals in the Triangle and eastern NC.</p>
+      <span class="door-cta">Find a Stay →</span>
+    </a>
+    <a href="homes/index.html" class="door door-homes">
+      <div class="door-tag">Ingenious Homes</div>
+      <h2>Building up neighborhoods.</h2>
+      <p class="door-body">Rehabilitating homes so longtime residents can stay in the communities they built.</p>
+      <span class="door-cta">Our Community Work →</span>
+    </a>
+  </div>
+</div>
+
+<!-- FOUNDER STORY -->
+<section class="founder">
+  <div class="founder-inner">
+    <span class="eyebrow eyebrow-gs" style="font-size:0.945rem;">Our Story</span>
+    <blockquote class="founder-pullquote">
+      "He saw firsthand what a neighborhood can do when it holds together and what's lost when it comes apart."
+    </blockquote>
+    <p class="founder-text">Ingenious Stays was founded by a Louisburg, North Carolina native who grew up in a community that invested in its young people and showed up when families needed support. Years later, while working with distressed properties in Clayton, he saw families being pushed out of the towns they had called home for generations. Ingenious Stays was built to address that challenge.</p>
+    <p class="founder-text">We approach the work from two directions. First, we provide furnished homes for traveling professionals that feel like homes rather than hotel rooms. Since 2025, we have welcomed more than 40 guests, with traveling professionals among our most frequent. This helps bring skilled workers and local spending into the communities we serve. Second, we reinvest a portion of that income into acquiring and thoughtfully restoring single-family homes and duplexes. We hire local contractors, aim to keep rents reasonable, and help create a real path for longtime residents to remain in the neighborhoods they helped build.</p>
+    <p class="founder-text">Our work began in Clayton, with plans to expand into Louisburg, Wake Forest, Knightdale, Southeast Raleigh, and Durham. We believe change can be positive, but it should not come at the expense of the people who already call these communities home. Our goal is to build responsibly, uplift our neighbors, and do right by every community we serve.</p>
+  </div>
+</section>
+
+<!-- ABOUT / MISSION -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <span class="eyebrow eyebrow-gs" style="font-size:0.945rem;">Mission</span>
+    <h2 class="section-title">Why we exist.</h2>
+    <div class="rule"></div>
+    <p class="about-text">Ingenious Stays provides quality, comfortable housing that strengthens North Carolina communities from both directions <strong>welcoming the traveling professionals</strong> who bring skills and economic activity into our towns, and <strong>rehabilitating homes</strong> so longtime residents can stay in the neighborhoods they built. We believe revitalization should lift a community up, not price its people out.</p>
+
+    <div style="margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="homes/partners.html" class="btn btn-gs">View Our Track Record</a>
+      <a href="stays/index.html" class="btn btn-outline-gs">Find a Stay</a>
+    </div>
+  </div>
+</section>
+
+<!-- SIX TOWNS -->
+<section class="towns">
+  <div class="towns-header">
+    <span class="eyebrow eyebrow-gh" style="font-size:0.882rem;">Where We Work</span>
+    <h2 class="section-title">Six communities. One mission.</h2>
+  </div>
+  <div class="towns-grid">
+    <div class="town-card">
+      <div class="town-name">Clayton</div>
+      <div class="town-county">Johnston County</div>
+    </div>
+    <div class="town-card">
+      <div class="town-name">Louisburg</div>
+      <div class="town-county">Franklin County</div>
+    </div>
+    <div class="town-card">
+      <div class="town-name">Wake Forest</div>
+      <div class="town-county">Wake County</div>
+    </div>
+    <div class="town-card">
+      <div class="town-name">Knightdale</div>
+      <div class="town-county">Wake County</div>
+    </div>
+    <div class="town-card">
+      <div class="town-name">Southeast Raleigh</div>
+      <div class="town-county">Wake County</div>
+    </div>
+    <div class="town-card">
+      <div class="town-name">Durham</div>
+      <div class="town-county">Durham County</div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="numbers">
+  <div class="numbers-inner">
+    <div>
+      <div class="stat-num">2+</div>
+      <div class="stat-label"><strong>Years Operating</strong>Serving guests since 2025</div>
+    </div>
+    <div class="number-divider">
+      <div class="stat-num" style="padding-left:3rem;">40+</div>
+      <div class="stat-label" style="padding-left:3rem;"><strong>Professionals and Guests Housed</strong>Nurses, contractors, flight attendants, business travelers</div>
+    </div>
+    <div class="number-divider">
+      <div class="stat-num" style="padding-left:3rem;">6</div>
+      <div class="stat-label" style="padding-left:3rem;"><strong>NC Communities</strong>Clayton to Durham and beyond</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Ingenious Developments</div>
+      <p class="footer-brand-sub">Welcoming those who serve. Protecting those who built. Rooted in North Carolina since 2024.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Stays</h4>
+      <a href="stays/index.html">Find a Stay</a>
+      <a href="stays/properties.html">All Properties</a>
+      <!-- FOR EMPLOYERS TAB — hidden, restore when needed: <a href="stays/for-employers.html">For Employers</a> -->
+      <a href="stays/book.html">Book Now</a>
+    </div>
+    <div class="footer-col">
+      <h4>Homes</h4>
+      <a href="homes/index.html">Our Mission</a>
+      <a href="homes/our-approach.html">Our Approach</a>
+      <a href="homes/available-homes.html">Available Homes</a>
+      <a href="homes/partners.html">Partners &amp; Funders</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:info@ingeniousdevelopments.com">info@ingeniousdevelopments.com</a>
+      <a href="tel:+19842126836">(984) 212-6836</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Ingenious Developments LLC · Clayton, NC</span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.mobile-nav a').forEach(a =>
+  a.addEventListener('click', () => document.querySelector('.mobile-nav').classList.remove('open'))
+);
+</script>
+</body>
+</html>
+
