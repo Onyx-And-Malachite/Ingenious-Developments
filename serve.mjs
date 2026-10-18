@@ -4,8 +4,15 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const PORT = 3000;
-const SITE_DIR = path.join(__dirname, 'ingeniousdevelopments');
+
+// Usage: node serve.mjs  -> Ingenious Developments site on port 3000
+const SITES = {
+  2: { dir: 'site-2-ingenious-developments', port: 3000 },
+};
+const site = SITES[process.argv[2] || '2'];
+if (!site) { console.error('Usage: node serve.mjs'); process.exit(1); }
+const PORT = Number(process.env.PORT) || site.port;
+const SITE_DIR = path.join(__dirname, site.dir);
 
 const MIME = {
   '.html': 'text/html',
@@ -29,9 +36,7 @@ http.createServer((req, res) => {
   let urlPath = decodeURIComponent(req.url.split('?')[0]);
   if (urlPath.endsWith('/')) urlPath += 'index.html';
 
-  // Serve the site folder first; fall back to the project root for shared files like brand_assets/
-  const sitePath = path.join(SITE_DIR, urlPath);
-  const filePath = fs.existsSync(sitePath) ? sitePath : path.join(__dirname, urlPath);
+  const filePath = path.join(SITE_DIR, urlPath);
   const ext = path.extname(filePath).toLowerCase();
 
   fs.readFile(filePath, (err, data) => {
@@ -44,5 +49,5 @@ http.createServer((req, res) => {
     res.end(data);
   });
 }).listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Serving ${site.dir} at http://localhost:${PORT}`);
 });

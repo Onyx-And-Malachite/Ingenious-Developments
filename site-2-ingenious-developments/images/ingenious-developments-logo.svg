@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-12 0 424 288" width="1272" height="864" role="img" aria-label="Ingenious Developments — Thoughtful housing. Shared prosperity.">
+  <title>Ingenious Developments — Thoughtful housing. Shared prosperity.</title>
+  <g transform="translate(150,10)">
+  <polygon points="7,62 47,22 47,36 7,76" fill="#2C5545"/>
+  <polygon points="93,62 53,22 53,36 93,76" fill="#2C5545"/>
+  <rect x="7" y="84" width="86" height="11" fill="#A6462E"/>
+  </g>
+  <text x="200" y="176" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="36" font-weight="500" letter-spacing="6" fill="#1B2A24">INGENIOUS</text>
+  <text x="200" y="202" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14.3" font-weight="400" letter-spacing="9.35" fill="#2C5545">DEVELOPMENTS</text>
+  <line x1="172" y1="226" x2="228" y2="226" stroke="#A6462E" stroke-width="2"/>
+  <text x="200" y="252" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13.2" font-weight="400" letter-spacing="2.86" fill="#1B2A24" opacity="0.8">THOUGHTFUL HOUSING. SHARED PROSPERITY.</text>
+</svg>
