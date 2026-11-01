@@ -360,21 +360,24 @@
     <form onsubmit="handleInquiry(event)">
       <div class="form-group">
         <label class="form-label">Check-in date</label>
-        <input class="form-input" type="date">
+        <input class="form-input" type="date" name="Check-in date">
       </div>
       <div class="form-group">
         <label class="form-label">Check-out date</label>
-        <input class="form-input" type="date">
+        <input class="form-input" type="date" name="Check-out date">
       </div>
       <div class="form-group">
         <label class="form-label">Your name</label>
-        <input class="form-input" type="text" placeholder="Full name">
+        <input class="form-input" type="text" name="Name" required placeholder="Full name">
       </div>
       <div class="form-group">
         <label class="form-label">Phone or email</label>
-        <input class="form-input" type="text" placeholder="Best way to reach you">
+        <input class="form-input" type="text" name="Phone or email" required placeholder="Best way to reach you">
       </div>
+      <!-- Spam trap: hidden from people, bots fill it in and FormSubmit discards those -->
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
       <button type="submit" class="btn btn-gs" style="width:100%;justify-content:center;">Request to Book →</button>
+      <p id="inquiry-error" class="form-note" style="text-align:center;margin-top:0.75rem;color:#b3261e;" hidden>Sorry, your request didn't go through. Please try again, or call us at (984) 212-6836.</p>
     </form>
 
     <ul class="included-list" style="margin-top:1.25rem;">
@@ -403,7 +406,7 @@
   <div class="footer-grid">
     <div>
       <div class="footer-brand-name">Ingenious Developments</div>
-      <p class="footer-brand-sub">Welcoming those who serve. Protecting those who built.</p>
+      <p class="footer-brand-sub">Thoughtful Housing. Shared Prosperity.</p>
     </div>
     <div class="footer-col">
       <h4>Stays</h4>
@@ -449,7 +452,41 @@ function openPhoto(i) { lbIdx=i; lb.style.display='flex'; lbImg.src=PHOTOS[i]; l
 function closeLb() { lb.style.display='none'; }
 function lbMove(d) { lbIdx=(lbIdx+d+PHOTOS.length)%PHOTOS.length; lbImg.src=PHOTOS[lbIdx]; lbCount.textContent=`${lbIdx+1} / ${PHOTOS.length}`; }
 document.addEventListener('keydown', e => { if(!lb.style.display||lb.style.display==='none') return; if(e.key==='ArrowRight') lbMove(1); if(e.key==='ArrowLeft') lbMove(-1); if(e.key==='Escape') closeLb(); });
-function handleInquiry(e) { e.preventDefault(); const btn=e.target.querySelector('button[type=submit]'); btn.textContent='Sent! We respond to every inquiry.'; btn.disabled=true; setTimeout(()=>{btn.textContent='Request to Book →';btn.disabled=false;},5000); }
+// Inquiries are emailed via FormSubmit (formsubmit.co). The first submission
+// sends a one-time activation email to the inbox below; click "Activate" in it.
+const INQUIRY_EMAIL = 'info@ingeniousdevelopments.com';
+
+async function handleInquiry(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type=submit]');
+  const err = document.getElementById('inquiry-error');
+  err.hidden = true;
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  const data = Object.fromEntries(new FormData(form));
+  data._subject = `New booking request from ${data.Name}`;
+  data._template = 'table';
+
+  try {
+    const res = await fetch(`https://formsubmit.co/ajax/${INQUIRY_EMAIL}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok || String(out.success) === 'false') throw new Error(out.message || res.statusText);
+    form.reset();
+    btn.textContent = 'Sent! We respond to every inquiry.';
+    setTimeout(() => { btn.textContent = 'Request to Book →'; btn.disabled = false; }, 5000);
+  } catch (ex) {
+    console.error('Inquiry failed:', ex);
+    err.hidden = false;
+    btn.disabled = false;
+    btn.textContent = 'Request to Book →';
+  }
+}
 document.querySelectorAll('.mobile-nav a').forEach(a => a.addEventListener('click', () => document.querySelector('.mobile-nav').classList.remove('open')));
 </script>
 </body>

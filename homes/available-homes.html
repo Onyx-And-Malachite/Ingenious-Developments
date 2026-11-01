@@ -231,25 +231,25 @@
         <form onsubmit="handleApply(event)">
           <div class="form-group">
             <label class="form-label">Your name *</label>
-            <input class="form-input" type="text" required placeholder="Full name">
+            <input class="form-input" type="text" name="Name" required placeholder="Full name">
           </div>
           <div class="form-row">
             <div class="form-group">
               <label class="form-label">Phone *</label>
-              <input class="form-input" type="tel" required placeholder="(984) 212-6836">
+              <input class="form-input" type="tel" name="Phone" required placeholder="(984) 212-6836">
             </div>
             <div class="form-group">
               <label class="form-label">Email</label>
-              <input class="form-input" type="email" placeholder="Optional">
+              <input class="form-input" type="email" name="email" placeholder="Optional">
             </div>
           </div>
           <div class="form-group">
             <label class="form-label">Current neighborhood or street (if in Clayton area)</label>
-            <input class="form-input" type="text" placeholder="E.g. Downtown Clayton, E Wilson St area...">
+            <input class="form-input" type="text" name="Current neighborhood" placeholder="E.g. Downtown Clayton, E Wilson St area...">
           </div>
           <div class="form-group">
             <label class="form-label">Household size</label>
-            <select class="form-select">
+            <select class="form-select" name="Household size">
               <option value="">Select...</option>
               <option>Just me</option>
               <option>2 people</option>
@@ -259,7 +259,7 @@
           </div>
           <div class="form-group">
             <label class="form-label">Bedrooms needed</label>
-            <select class="form-select">
+            <select class="form-select" name="Bedrooms needed">
               <option value="">Select...</option>
               <option>1 bedroom</option>
               <option>2 bedrooms</option>
@@ -269,9 +269,12 @@
           </div>
           <div class="form-group">
             <label class="form-label">Anything we should know?</label>
-            <textarea class="form-textarea" style="min-height:80px;" placeholder="Accessibility needs, timeline, questions..."></textarea>
+            <textarea class="form-textarea" name="Message" style="min-height:80px;" placeholder="Accessibility needs, timeline, questions..."></textarea>
           </div>
-          <button type="submit" class="btn btn-gh" style="width:100%;justify-content:center;">Submit Interest →</button>
+          <!-- Spam trap: hidden from people, bots fill it in and FormSubmit discards those -->
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <button type="submit" id="apply-submit" class="btn btn-gh" style="width:100%;justify-content:center;">Submit Interest →</button>
+          <p id="apply-error" class="form-note" style="text-align:center;margin-top:0.75rem;color:#b3261e;" hidden>Sorry, your submission didn't go through. Please try again, or call us at (984) 212-6836.</p>
           <p class="form-note" style="text-align:center;margin-top:0.75rem;">No application fee · No commitment required · We respond to everyone</p>
         </form>
         <div id="apply-success" style="display:none;background:var(--gh-soft);border:1px solid rgba(122,46,26,0.15);border-radius:var(--r);padding:1.5rem;text-align:center;margin-top:1rem;">
@@ -288,7 +291,7 @@
   <div class="footer-grid">
     <div>
       <div class="footer-brand-name">Ingenious Developments</div>
-      <p class="footer-brand-sub">Welcoming those who serve. Protecting those who built.</p>
+      <p class="footer-brand-sub">Thoughtful Housing. Shared Prosperity.</p>
     </div>
     <div class="footer-col">
       <h4>Homes</h4>
@@ -314,10 +317,39 @@
 </footer>
 
 <script>
-function handleApply(e) {
+// Submissions are emailed via FormSubmit (formsubmit.co). The first submission
+// sends a one-time activation email to the inbox below; click "Activate" in it.
+const INQUIRY_EMAIL = 'info@ingeniousdevelopments.com';
+
+async function handleApply(e) {
   e.preventDefault();
-  e.target.style.display = 'none';
-  document.getElementById('apply-success').style.display = 'block';
+  const form = e.target;
+  const btn = document.getElementById('apply-submit');
+  const err = document.getElementById('apply-error');
+  err.hidden = true;
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  const data = Object.fromEntries(new FormData(form));
+  data._subject = `New homes interest list signup from ${data.Name}`;
+  data._template = 'table';
+
+  try {
+    const res = await fetch(`https://formsubmit.co/ajax/${INQUIRY_EMAIL}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok || String(out.success) === 'false') throw new Error(out.message || res.statusText);
+    form.style.display = 'none';
+    document.getElementById('apply-success').style.display = 'block';
+  } catch (ex) {
+    console.error('Submission failed:', ex);
+    err.hidden = false;
+    btn.disabled = false;
+    btn.textContent = 'Submit Interest →';
+  }
 }
 document.querySelectorAll('.mobile-nav a').forEach(a => a.addEventListener('click', () => document.querySelector('.mobile-nav').classList.remove('open')));
 </script>
